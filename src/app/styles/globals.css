@@ -1,0 +1,120 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Light mode (default) */
+:root {
+  --background: #f0f0f3; /* Soft gray with a cool blue tint */
+  --foreground: #15151a; /* Darker cool gray for text */
+
+  --primary: #1c1c22; /* Deep gray with a blue hue */
+  --primary-foreground: #ffffff;
+
+  --secondary: #e3e4e8; /* Light gray with subtle blue */
+  --secondary-foreground: #1c1c22;
+
+  --destructive: #e63946;
+  --destructive-foreground: #ffffff;
+
+  --accent: #d0d1d6; /* Cool gray with slight blue */
+  --accent-foreground: #1c1c22;
+
+  --muted: #e3e4e8;
+  --muted-foreground: #52525b;
+
+  --border: #c7c8cf; /* Soft cool gray */
+  --input: #b6b8c1; /* Muted cool gray */
+  --ring: #5a5f73; /* Darker cool gray-blue */
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #08080a; /* Dark, blue-tinted black */
+    --foreground: #e6e6eb; /* Cool light gray */
+
+    --primary: #e6e6eb; /* Dark blue-gray */
+    --primary-foreground: #08080a;
+
+    --secondary: #1e1e24; /* Dark cool gray */
+    --secondary-foreground: #e0e0e4;
+
+    --destructive: #f87171;
+    --destructive-foreground: #1e1e24;
+
+    --accent: #2b2c33; /* Deep cool gray */
+    --accent-foreground: #e6e6eb;
+
+    --muted: #2b2c33;
+    --muted-foreground: #a1a1aa;
+
+    --border: #3f4048; /* Slightly lighter blue-gray */
+    --input: #4a4b56;
+    --ring: #6e7592; /* Darker steel blue */
+  }
+}
+
+/* Tailwind v4 Theme Definitions */
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 2.25rem;
+  line-height: 1.11;
+  color: var(--foreground);
+  opacity: 0.92;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.33;
+  color: var(--foreground);
+  opacity: 0.84;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--foreground);
+  opacity: 0.84;
+}
+
+p {
+  color: var(--foreground);
+  opacity: 0.84;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
