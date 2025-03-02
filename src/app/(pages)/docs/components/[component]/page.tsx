@@ -5,10 +5,8 @@ export default async function ComponentPage({
 }: {
   params: { component: string };
 }) {
-  const component = (await params).component;
-
+  const component = params.component;
   try {
-    // Dynamically import the MDX file
     const Page = (await import(`@/app/content/components/${component}.mdx`))
       .default;
 
