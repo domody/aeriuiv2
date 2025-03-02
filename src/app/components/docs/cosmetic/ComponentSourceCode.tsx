@@ -8,8 +8,12 @@ interface ComponentSourceCodeProps {
 export async function ComponentSourceCode({
   component,
 }: ComponentSourceCodeProps) {
+  console.log("Starting ComponentSourceCode component");
+  console.log("Env var with process: ", process.env.NEXT_PUBLIC_SITE_URL);
+
   try {
-    console.log(process.env.NEXT_PUBLIC_SITE_URL)
+    console.log("Entered try block");
+    console.log("Env var: ", process.env.NEXT_PUBLIC_SITE_URL);
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_SITE_URL}/api/docs/get-component-code/${component}`,
       {
@@ -38,7 +42,7 @@ export async function ComponentSourceCode({
       </div>
     );
   } catch (error) {
-    console.error('Error fetching component code: ', error)
+    console.error("Error fetching component code: ", error);
     return <p className="text-red-500">Failed to fetch component code.</p>;
   }
 }
