@@ -8,12 +8,7 @@ interface ComponentSourceCodeProps {
 export async function ComponentSourceCode({
   component,
 }: ComponentSourceCodeProps) {
-  console.log("Starting ComponentSourceCode component");
-  console.log("Env var with process: ", process.env.NEXT_PUBLIC_SITE_URL);
-
   try {
-    console.log("Entered try block");
-    console.log("Env var: ", process.env.NEXT_PUBLIC_SITE_URL);
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_SITE_URL}/api/docs/get-component-code/${component}`,
       {

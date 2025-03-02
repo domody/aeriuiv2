@@ -13,6 +13,8 @@ export async function GET(
     `src/app/components/ui/${parsedComponent}/${parsedComponent}.tsx`,
   );
 
+  console.log(filePath)
+  
   try {
     if (!fs.existsSync(filePath)) {
       return NextResponse.json(
