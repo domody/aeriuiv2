@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "aeriui/Button";
 import Link from "next/link";
+import GithubLogoWhite from "@/app/assets/brand/github/github-mark-white.svg";
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
               rel="noopener noreferrer"
             >
               <Image
-                src="https://cdn.simpleicons.org/github/black/white"
+                src={GithubLogoWhite}
                 alt="Github Icon"
                 className="mb-0.5"
                 height="18"
