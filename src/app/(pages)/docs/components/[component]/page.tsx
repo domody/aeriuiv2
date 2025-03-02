@@ -18,6 +18,7 @@ export default async function ComponentPage({
       </div>
     );
   } catch (error) {
+    console.error("Error loading component page: ", error);
     return notFound();
   }
 }

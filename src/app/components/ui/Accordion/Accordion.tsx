@@ -20,16 +20,29 @@ interface AccordionContextProps {
 
 const AccordionContext = createContext<AccordionContextProps | null>(null);
 
-interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
+  defaultValue?: string;
+}
 
 const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
-  ({ className, ...props }, ref) => {
+  ({ className, defaultValue, ...props }, ref) => {
     const [openItem, setOpenItem] = useState<string | null>(null);
     const [contentHeight, setContentHeight] = useState<number | null>(null);
 
+    useEffect(() => {
+      if (defaultValue) {
+        setOpenItem(defaultValue);
+      }
+    }, [setOpenItem, defaultValue]);
+
     return (
       <AccordionContext.Provider
-        value={{ openItem, setOpenItem, contentHeight, setContentHeight }}
+        value={{
+          openItem,
+          setOpenItem,
+          contentHeight,
+          setContentHeight,
+        }}
       >
         <div ref={ref} className={cn(className, "w-full")} {...props} />
       </AccordionContext.Provider>
@@ -62,6 +75,7 @@ const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
           height: isOpen ? `${contentHeight! + 40}px` : "2.5rem",
         }}
         onClick={() => setOpenItem(isOpen ? null : value)}
+        {...props}
       >
         {React.Children.map(children, (child) =>
           React.isValidElement<{ value?: string }>(child)
@@ -92,6 +106,7 @@ const AccordionTitle = React.forwardRef<
         className,
         "flex h-10 cursor-pointer items-center justify-between px-2",
       )}
+      {...props}
     >
       {children}
       <ChevronDown
@@ -101,6 +116,7 @@ const AccordionTitle = React.forwardRef<
     </div>
   );
 });
+AccordionTitle.displayName = "AccordionTitle";
 
 const AccordionContent = React.forwardRef<
   HTMLDivElement,
@@ -121,10 +137,19 @@ const AccordionContent = React.forwardRef<
   }, [setContentHeight, children]);
 
   return (
-    <div ref={contentRef} className={cn(className, "px-2 pb-4")}>
+    <div
+      ref={(el) => {
+        contentRef.current = el;
+        if (typeof ref === "function") ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={cn(className, "px-2 pb-4")}
+      {...props}
+    >
       {children}
     </div>
   );
 });
+AccordionContent.displayName = "AccordionContent";
 
 export { Accordion, AccordionItem, AccordionTitle, AccordionContent };

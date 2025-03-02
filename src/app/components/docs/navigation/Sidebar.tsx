@@ -1,11 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { cn } from "@/app/lib/utils/cn";
 
 const Sidebar = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, children, ...props }, ref) => {
+>(({ className, ...props }, ref) => {
   const pathname = usePathname();
 
   const [files, setFiles] = useState<string[]>([]);
@@ -20,8 +21,9 @@ const Sidebar = React.forwardRef<
         }
         const data = await response.json();
         setFiles(data.files);
-      } catch (err) {
+      } catch (error) {
         setError("Error fetching files");
+        console.error("Error fetching files: ", error);
       }
     };
 
@@ -33,7 +35,14 @@ const Sidebar = React.forwardRef<
   }
 
   return (
-    <div className="border-secondary bg-backgrund fixed top-14 z-50 flex min-h-screen w-48 shrink-0 flex-col border-r pt-8">
+    <div
+      ref={ref}
+      className={cn(
+        "border-secondary bg-backgrund fixed top-14 z-50 flex min-h-screen w-48 shrink-0 flex-col border-r pt-8",
+        className,
+      )}
+      {...props}
+    >
       <p className="mb-2 font-bold">Components</p>
       {files.map((file, index) => {
         const componentName =
@@ -47,7 +56,7 @@ const Sidebar = React.forwardRef<
         return (
           <a
             key={index}
-            className="text-muted-foreground hover:text-secondary-foreground mb-1 text-sm transition-all"
+            className={`mb-1 text-sm transition-all ${pathname == `/docs/components/${file.split(".")[0]}` ? "text-secondary-foreground" : "text-muted-foreground hover:text-secondary-foreground"}`}
             href={`/docs/components/${file.split(".")[0]}`}
           >
             {componentName}
@@ -57,5 +66,6 @@ const Sidebar = React.forwardRef<
     </div>
   );
 });
+Sidebar.displayName = "Sidebar";
 
 export { Sidebar };

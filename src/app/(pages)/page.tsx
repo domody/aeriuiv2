@@ -1,11 +1,5 @@
 import Image from "next/image";
 import { Button } from "aeriui/Button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTitle,
-} from "aeriui/Accordion";
 import Link from "next/link";
 
 export default function Home() {
@@ -19,12 +13,17 @@ export default function Home() {
             <Link href="/docs/components/accordion">Learn More</Link>
           </Button>
           <Button variant="ghost" asChild>
-            <Link href="https://github.com/domody/aeriuiv2" target="_blank" rel="noopener noreferrer">
-              <img
+            <Link
+              href="https://github.com/domody/aeriuiv2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="https://cdn.simpleicons.org/github/black/white"
+                alt="Github Icon"
                 className="mb-0.5"
                 height="18"
                 width="18"
-                src="https://cdn.simpleicons.org/github/black/white"
               />
               Github
             </Link>
