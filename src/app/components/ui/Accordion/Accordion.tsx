@@ -59,7 +59,7 @@ const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
           "border-secondary overflow-hidden border-b transition-all",
         )}
         style={{
-          height: isOpen ? `${contentHeight! + 36}px` : "2.25rem",
+          height: isOpen ? `${contentHeight! + 40}px` : "2.5rem",
         }}
         onClick={() => setOpenItem(isOpen ? null : value)}
       >
@@ -90,7 +90,7 @@ const AccordionTitle = React.forwardRef<
       ref={ref}
       className={cn(
         className,
-        "flex h-9 cursor-pointer items-center justify-between px-2",
+        "flex h-10 cursor-pointer items-center justify-between px-2",
       )}
     >
       {children}

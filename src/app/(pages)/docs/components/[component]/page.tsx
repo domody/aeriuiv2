@@ -1,10 +1,23 @@
+import { notFound } from "next/navigation";
+
 export default async function ComponentPage({
   params,
 }: {
-  params: Promise<{ component: string }>;
+  params: { component: string };
 }) {
   const component = (await params).component;
 
-  const Comp = component[0].toLocaleUpperCase() + component.slice(1)
-  return <div className="">{Comp}</div>;
+  try {
+    // Dynamically import the MDX file
+    const Page = (await import(`@/app/content/components/${component}.mdx`))
+      .default;
+
+    return (
+      <div>
+        <Page />
+      </div>
+    );
+  } catch (error) {
+    return notFound();
+  }
 }
