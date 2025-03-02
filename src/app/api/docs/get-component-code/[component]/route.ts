@@ -13,8 +13,8 @@ export async function GET(
     `src/app/components/ui/${parsedComponent}/${parsedComponent}.tsx`,
   );
 
-  console.log(filePath)
-  
+  console.log(filePath);
+
   try {
     if (!fs.existsSync(filePath)) {
       return NextResponse.json(
@@ -23,8 +23,9 @@ export async function GET(
       );
     }
 
+    console.log("File exists.");
     const fileContent = fs.readFileSync(filePath, "utf-8");
-
+    console.log(fileContent);
     return NextResponse.json({ code: fileContent });
   } catch (error) {
     return NextResponse.json(
