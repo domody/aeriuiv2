@@ -13,6 +13,10 @@ export async function GET(
     `src/app/components/ui/${component}/${component}.tsx`,
   );
 
+  console.log(component);
+  console.log(process.env.NEXT_PUBLIC_SITE_URL);
+  console.log(filePath);
+
   try {
     if (!fs.existsSync(filePath)) {
       return NextResponse.json(
