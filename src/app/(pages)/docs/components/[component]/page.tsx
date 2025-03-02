@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 export default async function ComponentPage({
   params,
 }: {
-  params:  Promise<{ component: string }>;
+  params: Promise<{ component: string }>;
 }) {
   const component = (await params).component;
 
@@ -13,7 +13,7 @@ export default async function ComponentPage({
       .default;
 
     return (
-      <div className="w-full">
+      <div className="min-h-48 w-full max-w-full shrink overflow-hidden">
         <Page />
       </div>
     );

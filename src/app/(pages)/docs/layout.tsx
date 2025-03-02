@@ -13,7 +13,9 @@ export default function DocsLayout({
         <div className="relative w-48 shrink-0">
           <Sidebar />
         </div>
-        <div className="flex w-full flex-col px-8 py-8">{children}</div>
+        <div className="flex w-full max-w-full shrink flex-col overflow-hidden px-8 py-8">
+          {children}
+        </div>
         <div className="relative h-full w-48 shrink-0">
           <OnPage />
         </div>
