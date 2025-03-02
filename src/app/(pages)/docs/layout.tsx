@@ -10,7 +10,7 @@ export default function DocsLayout({
       <div className="border-secondary h-14 w-full border-b"></div>
       <div className="container mx-auto flex">
         <Sidebar />
-        <div className="flex flex-col px-4 pt-8">{children}</div>
+        <div className="w-full flex flex-col px-4 py-8">{children}</div>
       </div>
     </main>
   );

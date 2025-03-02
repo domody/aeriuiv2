@@ -13,7 +13,7 @@ export default async function ComponentPage({
       .default;
 
     return (
-      <div>
+      <div className="w-full">
         <Page />
       </div>
     );
