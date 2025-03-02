@@ -7,15 +7,11 @@ export async function GET(
   { params }: { params: Promise<{ component: string }> },
 ) {
   const { component } = await params;
-
+  const parsedComponent = component[0].toUpperCase() + component.slice(1);
   const filePath = path.join(
     process.cwd(),
-    `src/app/components/ui/${component}/${component}.tsx`,
+    `src/app/components/ui/${parsedComponent}/${parsedComponent}.tsx`,
   );
-
-  console.log(component);
-  console.log(process.env.NEXT_PUBLIC_SITE_URL);
-  console.log(filePath);
 
   try {
     if (!fs.existsSync(filePath)) {
