@@ -5,7 +5,8 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => <h1 className="mb-2">{children}</h1>,
-    hr: ({ children }) => <hr className="border-secondary my-8" />,
+    h2: ({ children }) => <h2 className="mb-2">{children}</h2>,
+    hr: () => <hr className="border-secondary my-8" />,
     pre: ({ children }) => (
       <pre
         className="bg-secondary/50 max-w-full overflow-x-scroll rounded p-2"

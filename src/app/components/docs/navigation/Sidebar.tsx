@@ -33,7 +33,7 @@ const Sidebar = React.forwardRef<
   }
 
   return (
-    <div className="border-secondary flex min-h-screen w-48 shrink-0 flex-col border-r pt-8">
+    <div className="border-secondary bg-backgrund fixed top-14 z-50 flex min-h-screen w-48 shrink-0 flex-col border-r pt-8">
       <p className="mb-2 font-bold">Components</p>
       {files.map((file, index) => {
         const componentName =
@@ -47,7 +47,7 @@ const Sidebar = React.forwardRef<
         return (
           <a
             key={index}
-            className="mb-1 text-sm"
+            className="text-muted-foreground hover:text-secondary-foreground mb-1 text-sm transition-all"
             href={`/docs/components/${file.split(".")[0]}`}
           >
             {componentName}

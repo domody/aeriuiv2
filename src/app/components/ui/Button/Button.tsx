@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ElementType } from "react";
 import { Slot } from "aeriui/Slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/app/lib/utils/cn";
@@ -23,7 +23,7 @@ const buttonVariants = cva(
         default: "h-8 px-4 py-1",
         sm: "h-7 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
-        icon: "h-9 w-9",
+        icon: "h-8 w-8",
       },
     },
     defaultVariants: {
@@ -41,7 +41,7 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+    const Comp = asChild ? (Slot as ElementType) : ("button" as ElementType);
 
     return (
       <Comp
