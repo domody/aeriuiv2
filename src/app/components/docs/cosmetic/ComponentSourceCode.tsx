@@ -37,6 +37,7 @@ export async function ComponentSourceCode({
       </div>
     );
   } catch (error) {
+    console.error('Error fetching component code: ', error)
     return <p className="text-red-500">Failed to fetch component code.</p>;
   }
 }
