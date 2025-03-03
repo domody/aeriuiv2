@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/docs/get-component-code/*": {
+      "includeFiles": "src/app/components/ui/**/*"
+    }
+  }
+}
