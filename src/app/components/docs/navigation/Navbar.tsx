@@ -17,7 +17,7 @@ import { Sun, Moon, Monitor } from "lucide-react";
 export function Navbar() {
   return (
     <div className="bg-background border-secondary fixed top-0 left-0 z-50 h-14 w-full border-b">
-      <div className="container mx-auto flex h-14 items-center justify-between font-mono">
+      <div className="container mx-auto flex h-14 items-center justify-between">
         <h2>
           <Link href={`/`}>aeri</Link>
         </h2>

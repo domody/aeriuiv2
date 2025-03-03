@@ -5,8 +5,11 @@ import GithubLogoWhite from "@/app/assets/brand/github/github-mark-white.svg";
 
 export default function Home() {
   return (
-    <main className="min-h-screen pt-32">
-      <div className="container mx-auto flex h-full flex-col items-start justify-start px-2 font-mono">
+    <main className="min-h-screen">
+      <div className="absolute top-0 left-0 -z-10 h-screen w-screen">
+        <div className="h-full w-full bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:20px_20px]" />
+      </div>
+      <div className="container mx-auto flex h-full min-h-screen flex-col items-start justify-start px-2 pt-64">
         <h1>aeri ui v2</h1>
         <h3>free, copy-paste components built for nextjs.</h3>
         <div className="mt-4 flex gap-2">
@@ -31,6 +34,7 @@ export default function Home() {
           </Button>
         </div>
       </div>
+      {/* <div className="from-secondary/45 to-75% to-background min-h-screen bg-gradient-to-b"></div> */}
     </main>
   );
 }

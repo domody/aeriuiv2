@@ -24,6 +24,8 @@
   --border: #c7c8cf; /* Soft cool gray */
   --input: #b6b8c1; /* Muted cool gray */
   --ring: #5a5f73; /* Darker cool gray-blue */
+
+  --pattern-fg: color-mix(in oklab, var(--color-white) 10%, transparent);
 }
 
 /* Dark mode */
