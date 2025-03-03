@@ -13,7 +13,17 @@ export async function GET(
     `src/app/components/ui/${parsedComponent}/${parsedComponent}.tsx`,
   );
 
-  console.log(filePath);
+  console.log("Requested component:", component);
+  console.log("Expected file path:", filePath);
+
+  console.log(
+    "Reseloved FilePath: ",
+    path.resolve(
+      process.cwd(),
+      `src/app/components/ui/${parsedComponent}/${parsedComponent}.tsx`,
+    ),
+  );
+  console.log("CWD:", process.cwd());
 
   try {
     if (!fs.existsSync(filePath)) {
