@@ -25,6 +25,27 @@ export async function GET(
   );
   console.log("CWD:", process.cwd());
 
+  const baseDir = path.join(process.cwd(), "src/app/components/ui");
+
+  // Helper function to recursively list all folders and files
+  function listFilesRecursive(dir: string, depth = 0) {
+    try {
+      const entries = fs.readdirSync(dir, { withFileTypes: true });
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        console.log(`${" ".repeat(depth * 2)}- ${entry.name}`);
+        if (entry.isDirectory()) {
+          listFilesRecursive(fullPath, depth + 1);
+        }
+      }
+    } catch (error) {
+      console.error("Error reading directory:", dir, error);
+    }
+  }
+
+  console.log("Listing all files under:", baseDir);
+  listFilesRecursive(baseDir);
+
   try {
     if (!fs.existsSync(filePath)) {
       return NextResponse.json(
@@ -35,7 +56,6 @@ export async function GET(
 
     console.log("File exists.");
     const fileContent = fs.readFileSync(filePath, "utf-8");
-    console.log(fileContent);
     return NextResponse.json({ code: fileContent });
   } catch (error) {
     return NextResponse.json(

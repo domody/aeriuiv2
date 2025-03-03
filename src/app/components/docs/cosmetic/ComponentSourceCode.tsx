@@ -16,8 +16,8 @@ export async function ComponentSourceCode({
       },
     );
     const data = await response.json();
-    console.log("Data in component: ", data)
-    
+    // console.log("Data in component: ", data)
+
     if (!data.code) {
       return <p className="text-red-500">Error loading code.</p>;
     }
