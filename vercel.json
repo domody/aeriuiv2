@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/docs/get-component-code/*.tsx": {
+    "api/docs/get-component-code/**/*.ts": {
       "includeFiles": "src/app/components/ui/**/*"
     }
   }
