@@ -1,12 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
-
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
-
 /* Light mode (default) */
 :root {
   --background: #f0f0f3; /* Soft gray with a cool blue tint */

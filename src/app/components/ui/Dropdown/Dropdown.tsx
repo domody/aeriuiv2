@@ -27,6 +27,32 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
     const triggerRef = useRef<HTMLDivElement | null>(null);
     const menuRef = useRef<HTMLDivElement | null>(null);
 
+    useEffect(() => {
+      function handleClickOutside(e: MouseEvent) {
+        if (!e.target) return;
+        const target = e.target as Node;
+
+        if (
+          menuRef.current &&
+          !menuRef.current.contains(target) &&
+          triggerRef.current &&
+          !triggerRef.current.contains(target)
+        ) {
+          setOpen(false);
+        }
+      }
+
+      if (open) {
+        document.addEventListener("mousedown", handleClickOutside);
+      } else {
+        document.removeEventListener("mousedown", handleClickOutside);
+      }
+
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [open, setOpen]);
+
     return (
       <DropdownContext.Provider
         value={{
@@ -37,7 +63,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
           menuRef,
         }}
       >
-        <div ref={ref} className="relative" {...props}>
+        <div ref={ref} className={cn("relative", className)} {...props}>
           {children}
         </div>{" "}
       </DropdownContext.Provider>
@@ -60,6 +86,7 @@ const DropdownTrigger = React.forwardRef<HTMLDivElement, ButtonProps>(
           if (typeof ref === "function") ref(el);
           else if (ref) ref.current = el;
         }}
+        className={cn("", className)}
       >
         <Button
           onClick={(e) => {
@@ -109,33 +136,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
     const context = useContext(DropdownContext);
     if (!context) throw new Error("DropdownMenu must be used in a Dropdown!");
 
-    const { open, setOpen, menuRef, triggerRef } = context;
-
-    useEffect(() => {
-      function handleClickOutside(e: MouseEvent) {
-        if (!e.target) return;
-        const target = e.target as Node;
-
-        if (
-          menuRef.current &&
-          !menuRef.current.contains(target) &&
-          triggerRef.current &&
-          !triggerRef.current.contains(target)
-        ) {
-          setOpen(false);
-        }
-      }
-
-      if (open) {
-        document.addEventListener("mousedown", handleClickOutside);
-      } else {
-        document.removeEventListener("mousedown", handleClickOutside);
-      }
-
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [setOpen]);
+    const { open, menuRef } = context;
 
     return (
       <div
@@ -172,7 +173,13 @@ const DropdownSection = React.forwardRef<HTMLDivElement, DropdownSectionProps>(
   ({ className, children, seperator = true, ...props }, ref) => {
     return (
       <div
-        className={`flex flex-col items-start justify-start p-1 ${seperator ? "border-secondary border-b" : ""}`}
+        ref={ref}
+        className={cn(
+          "flex flex-col items-start justify-start p-1",
+          seperator ? "border-secondary border-b" : "",
+          className,
+        )}
+        {...props}
       >
         {children}
       </div>
@@ -184,13 +191,15 @@ DropdownSection.displayName = "DropdownSection";
 const DropdownItem = React.forwardRef<HTMLDivElement, ButtonProps>(
   ({ className, children, ...props }, ref) => {
     return (
-      <Button
-        className="w-full justify-start rounded px-2"
-        variant="ghost"
-        {...props}
-      >
-        {children}
-      </Button>
+      <div ref={ref}>
+        <Button
+          className={cn("w-full justify-start rounded px-2", className)}
+          variant="ghost"
+          {...props}
+        >
+          {children}
+        </Button>
+      </div>
     );
   },
 );

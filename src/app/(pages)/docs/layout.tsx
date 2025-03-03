@@ -1,6 +1,5 @@
 import { Sidebar } from "@/app/components/docs/navigation/Sidebar";
 import { OnPage } from "@/app/components/docs/navigation/OnPage";
-import Link from "next/link";
 
 export default function DocsLayout({
   children,
