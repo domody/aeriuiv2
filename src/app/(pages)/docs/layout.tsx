@@ -1,5 +1,6 @@
 import { Sidebar } from "@/app/components/docs/navigation/Sidebar";
 import { OnPage } from "@/app/components/docs/navigation/OnPage";
+import Link from "next/link";
 
 export default function DocsLayout({
   children,
@@ -8,7 +9,6 @@ export default function DocsLayout({
 }) {
   return (
     <main className="flex min-h-screen flex-col font-mono">
-      <div className="bg-background border-secondary fixed top-0 left-0 z-50 h-14 w-full border-b"></div>
       <div className="container mx-auto flex h-full pt-14">
         <div className="relative w-48 shrink-0">
           <Sidebar />

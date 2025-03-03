@@ -8,7 +8,7 @@ const ComponentWrapper = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "border-secondary mt-4 flex items-center justify-center rounded border px-12 py-20",
+        "border-secondary mt-4 flex items-center justify-center rounded border px-12 py-20 mb-8",
         className,
       )}
       {...props}

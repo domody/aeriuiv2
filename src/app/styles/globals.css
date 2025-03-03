@@ -110,7 +110,7 @@ h3 {
 
 p {
   color: var(--foreground);
-  opacity: 0.84;
+  opacity: 0.64;
 }
 
 @media (prefers-color-scheme: dark) {
