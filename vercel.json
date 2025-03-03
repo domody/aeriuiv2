@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/docs/get-component-code/[component].ts":{
+    "pages/api/docs/get-component-code/[component].ts":{
       "includeFiles": "src/app/components/ui/**/*"
     }
   }
