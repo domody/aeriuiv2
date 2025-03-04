@@ -17,7 +17,7 @@ interface DropdownContextProps {
 const DropdownContext = createContext<DropdownContextProps | null>(null);
 
 interface DropdownProps extends React.HTMLAttributes<HTMLDivElement> {
-  onHover?: false;
+  onHover?: boolean;
 }
 
 const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
@@ -170,12 +170,12 @@ interface DropdownSectionProps extends React.HTMLAttributes<HTMLDivElement> {
   seperator?: boolean;
 }
 const DropdownSection = React.forwardRef<HTMLDivElement, DropdownSectionProps>(
-  ({ className, children, seperator = true, ...props }, ref) => {
+  ({ className, children, seperator = false, ...props }, ref) => {
     return (
       <div
         ref={ref}
         className={cn(
-          "flex flex-col items-start justify-start p-1",
+          "flex w-full flex-col items-start justify-start p-1 bg-red",
           seperator ? "border-secondary border-b" : "",
           className,
         )}
@@ -191,7 +191,7 @@ DropdownSection.displayName = "DropdownSection";
 const DropdownItem = React.forwardRef<HTMLDivElement, ButtonProps>(
   ({ className, children, ...props }, ref) => {
     return (
-      <div ref={ref}>
+      <div className="w-full" ref={ref}>
         <Button
           className={cn("w-full justify-start rounded px-2", className)}
           variant="ghost"
