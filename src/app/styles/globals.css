@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
-
+@config "../../../tailwind.config.ts";
 /* Light mode (default) */
 :root {
   --background: #f0f0f3; /* Soft gray with a cool blue tint */
@@ -110,6 +110,7 @@ h3 {
   color: var(--foreground);
   opacity: 0.84;
 }
+
 
 @media (prefers-color-scheme: dark) {
   html {

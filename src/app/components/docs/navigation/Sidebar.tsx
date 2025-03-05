@@ -4,22 +4,20 @@ async function getFiles() {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_SITE_URL}/api/sidebar/getDocs`,
-      {
-        cache: "no-store",
-      },
+      { cache: "no-store" },
     );
+
     if (!response.ok) throw new Error("Failed to fetch files");
 
-    const data = await response.json();
-    return data.files;
+    return await response.json();
   } catch (error) {
     console.error("Error fetching files:", error);
-    return [];
+    return {};
   }
 }
 
 export async function Sidebar({ className }: { className?: string }) {
-  const files = await getFiles();
+  const filesByFolder = await getFiles();
 
   return (
     <div
@@ -28,30 +26,40 @@ export async function Sidebar({ className }: { className?: string }) {
         className,
       )}
     >
-      <p className="mb-2 font-bold">Components</p>
-      {files.length === 0 ? (
-        <p className="text-muted-foreground text-sm">No components found.</p>
+      {Object.keys(filesByFolder).length === 0 ? (
+        <p className="text-muted-foreground text-sm">No documents found.</p>
       ) : (
-        files.map((file: string, index: number) => {
-          const componentName =
-            file[0].toUpperCase() +
-            file
-              .slice(1)
-              .split(".")[0]
-              .replace(/([A-Z])/g, " $1")
-              .trim()
-              .replace("-", " ");
+        Object.entries(filesByFolder).map(([folder, files]) => (
+          <div key={folder} className="mb-4">
+            {/* Convert folder name to a formatted title */}
+            <p className="font-bold capitalize">{folder.replace("-", " ")}</p>
 
-          return (
-            <a
-              key={index}
-              className="text-muted-foreground hover:text-secondary-foreground mb-1 text-sm transition-all"
-              href={`/docs/components/${file.split(".")[0]}`}
-            >
-              {componentName}
-            </a>
-          );
-        })
+            {/* List files inside the folder */}
+            <div className="mt-1 ml-2 flex flex-col">
+              {files.map((file: string, index: number) => {
+                const fileName =
+                  file[0].toUpperCase() +
+                  file
+                    .slice(1)
+                    .split(".")[0]
+                    .replace(/([A-Z])/g, " $1")
+                    .trim()
+                    .replace("-", " ");
+                const fileSlug = file.replace(".mdx", "");
+
+                return (
+                  <a
+                    key={index}
+                    className="text-muted-foreground hover:text-secondary-foreground mb-1 text-sm transition-all"
+                    href={`/docs/${folder}/${fileSlug}`}
+                  >
+                    {fileName}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        ))
       )}
     </div>
   );
