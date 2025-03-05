@@ -194,7 +194,7 @@ const SelectorContent = React.forwardRef<HTMLDivElement, SelectContentProps>(
         }}
         className={cn(
           selectorContentVariants({ position }),
-          "min-w-full",
+          "w-min min-w-full",
           open ? "scale-100 opacity-100" : "scale-90 opacity-0",
           className,
         )}
