@@ -2,9 +2,12 @@ import { cn } from "@/app/lib/utils/cn";
 
 async function getFiles() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/sidebar/getDocs`, {
-      cache: "no-store",
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_SITE_URL}/api/sidebar/getDocs`,
+      {
+        cache: "no-store",
+      },
+    );
     if (!response.ok) throw new Error("Failed to fetch files");
 
     const data = await response.json();
@@ -21,7 +24,7 @@ export async function Sidebar({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "border-secondary bg-background fixed top-14 z-50 flex min-h-screen w-48 shrink-0 flex-col border-r pt-8",
+        "border-border bg-background fixed top-14 z-50 flex min-h-screen w-48 shrink-0 flex-col border-r pt-8",
         className,
       )}
     >
@@ -36,7 +39,8 @@ export async function Sidebar({ className }: { className?: string }) {
               .slice(1)
               .split(".")[0]
               .replace(/([A-Z])/g, " $1")
-              .trim();
+              .trim()
+              .replace("-", " ");
 
           return (
             <a

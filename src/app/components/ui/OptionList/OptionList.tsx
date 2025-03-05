@@ -6,19 +6,19 @@ import { cn } from "@/app/lib/utils/cn";
 
 interface OptionListProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
-  titleHasSeperator?: boolean;
+  titleSeperator?: boolean;
 }
 
 const OptionList = React.forwardRef<HTMLDivElement, OptionListProps>(
   (
-    { className, children, title, titleHasSeperator = false, ...props },
+    { className, children, title, titleSeperator = true, ...props },
     ref,
   ) => {
     return (
       <div
         ref={ref}
         className={cn(
-          "border-secondary bg-background h-min max-w-96 min-w-56 rounded-md border px-1 shadow-md transition-all",
+          "border-border bg-background h-min max-w-96 min-w-56 rounded-md border px-1 shadow-md transition-all",
           className,
         )}
         {...props}
@@ -26,8 +26,8 @@ const OptionList = React.forwardRef<HTMLDivElement, OptionListProps>(
         {title && (
           <p
             className={cn(
-              "pt-1.5 pl-2 text-sm font-semibold",
-              titleHasSeperator && "border-secondary border-b pb-2.5",
+              "pt-2 pl-2 text-sm font-semibold",
+              titleSeperator && "border-border border-b pb-2.5",
             )}
           >
             {title}
@@ -51,11 +51,7 @@ const OptionListSection = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={cn(
-        "py-1",
-        className,
-        seperator && "border-secondary border-b",
-      )}
+      className={cn("py-1", className, seperator && "border-border border-b")}
       {...props}
     >
       {children}
@@ -76,7 +72,7 @@ const OptionListItem = React.forwardRef<HTMLDivElement, OptionListItemProps>(
           className={cn(
             "w-full justify-start rounded px-2",
             variant === "destructive" &&
-              "hover:text-primary bg-transparent text-red-500 hover:bg-red-500",
+              "hover:text-destructive-foreground text-destructive hover:bg-destructive bg-transparent",
             className,
           )}
           variant={variant}

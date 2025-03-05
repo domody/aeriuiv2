@@ -6,6 +6,15 @@ import { Button, ButtonProps } from "aeriui/Button";
 import { cn } from "@/app/lib/utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
 
+import {
+  OptionList,
+  OptionListProps,
+  OptionListSection,
+  OptionListSectionProps,
+  OptionListItem,
+  OptionListItemProps,
+} from "aeriui/OptionList";
+
 interface DropdownContextProps {
   open: boolean;
   setOpen: React.Dispatch<SetStateAction<boolean>>;
@@ -105,7 +114,7 @@ const DropdownTrigger = React.forwardRef<HTMLDivElement, ButtonProps>(
 DropdownTrigger.displayName = "DropdownTrigger";
 
 const dropdownMenuVariants = cva(
-  `bg-background border-secondary absolute top-[calc(100%+0.5rem)] w-max max-w-96 min-w-36 rounded-lg border transition-all shadow`,
+  `bg-background border-border absolute top-[calc(100%+0.5rem)] w-max max-w-96 min-w-36 rounded-lg border transition-all shadow`,
   {
     variants: {
       position: {
@@ -123,23 +132,20 @@ const dropdownMenuVariants = cva(
 interface DropdownMenuProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof dropdownMenuVariants> {
-  position: "left" | "center" | "right";
+  position?: "left" | "center" | "right";
   title?: string;
   titleSeperator?: boolean;
 }
 
 const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
-  (
-    { className, children, position, title, titleSeperator = true, ...props },
-    ref,
-  ) => {
+  ({ className, children, position = "center", ...props }, ref) => {
     const context = useContext(DropdownContext);
     if (!context) throw new Error("DropdownMenu must be used in a Dropdown!");
 
     const { open, menuRef } = context;
 
     return (
-      <div
+      <OptionList
         ref={(el) => {
           menuRef.current = el;
           if (typeof ref === "function") ref(el);
@@ -152,54 +158,36 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
         )}
         {...props}
       >
-        {title && (
-          <div
-            className={`w-full px-3 py-2 font-medium ${titleSeperator ? "border-secondary border-b" : ""}`}
-          >
-            {title}
-          </div>
-        )}
         {children}
-      </div>
+      </OptionList>
     );
   },
 );
 DropdownMenu.displayName = "DropdownMenu";
 
-interface DropdownSectionProps extends React.HTMLAttributes<HTMLDivElement> {
-  seperator?: boolean;
-}
-const DropdownSection = React.forwardRef<HTMLDivElement, DropdownSectionProps>(
-  ({ className, children, seperator = false, ...props }, ref) => {
+const DropdownSection = React.forwardRef<
+  HTMLDivElement,
+  OptionListSectionProps
+>(({ className, children, ...props }, ref) => {
+  return (
+    <OptionListSection ref={ref} className={cn(className)} {...props}>
+      {children}
+    </OptionListSection>
+  );
+});
+DropdownSection.displayName = "DropdownSection";
+
+const DropdownItem = React.forwardRef<HTMLDivElement, OptionListItemProps>(
+  ({ className, children, ...props }, ref) => {
     return (
-      <div
+      <OptionListItem
         ref={ref}
-        className={cn(
-          "flex w-full flex-col items-start justify-start p-1 bg-red",
-          seperator ? "border-secondary border-b" : "",
-          className,
-        )}
+        className={cn("w-full justify-start rounded px-2", className)}
+        variant="ghost"
         {...props}
       >
         {children}
-      </div>
-    );
-  },
-);
-DropdownSection.displayName = "DropdownSection";
-
-const DropdownItem = React.forwardRef<HTMLDivElement, ButtonProps>(
-  ({ className, children, ...props }, ref) => {
-    return (
-      <div className="w-full" ref={ref}>
-        <Button
-          className={cn("w-full justify-start rounded px-2", className)}
-          variant="ghost"
-          {...props}
-        >
-          {children}
-        </Button>
-      </div>
+      </OptionListItem>
     );
   },
 );

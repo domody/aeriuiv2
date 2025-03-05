@@ -7,7 +7,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: ({ children }) => <h1 className="mb-2">{children}</h1>,
     h2: ({ children }) => <h2 className="mb-2">{children}</h2>,
     h3: ({ children }) => <h3>{children}</h3>,
-    hr: () => <hr className="border-secondary my-8" />,
+    hr: () => <hr className="border-border my-8" />,
     pre: ({ children }) => (
       <pre
         className="bg-secondary/50 mb-8 max-w-full overflow-x-scroll rounded p-2"

@@ -3,19 +3,11 @@ import { Button } from "aeriui/Button";
 import Link from "next/link";
 import GithubLogoWhite from "@/app/assets/brand/github/github-mark-white.svg";
 
-import {
-  ContextMenu,
-  ContextMenuTrigger,
-  ContextMenuContent,
-  ContextMenuSection,
-  ContextMenuItem,
-} from "../components/ui/ContextMenu";
-
 export default function Home() {
   return (
     <main className="min-h-screen">
       <div className="absolute top-0 left-0 -z-10 h-screen w-screen">
-        <div className="h-full w-full bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:20px_20px]" />
+        <div className="bg-dots h-full w-full" />
       </div>
       <div className="container mx-auto flex h-full min-h-screen flex-col items-start justify-start px-2 pt-64">
         <h1>aeri ui v2</h1>
@@ -42,28 +34,7 @@ export default function Home() {
           </Button>
         </div>
         <div className="mt-8 flex space-x-8">
-          <ContextMenu>
-            <ContextMenuTrigger className="border-secondary bg-background flex h-[300px] w-[600px] items-center justify-center rounded-md border border-dashed text-sm">
-              Right-Click Here
-            </ContextMenuTrigger>
-            <ContextMenuContent>
-              <ContextMenuSection seperator>
-                <ContextMenuItem>Back</ContextMenuItem>
-                <ContextMenuItem>Forward</ContextMenuItem>
-                <ContextMenuItem>Reload</ContextMenuItem>
-                <ContextMenuItem>More Tools</ContextMenuItem>
-              </ContextMenuSection>
-              <ContextMenuSection seperator>
-                <ContextMenuItem>Show Bookmarks Bar</ContextMenuItem>
-                <ContextMenuItem>Show Full URLs</ContextMenuItem>
-              </ContextMenuSection>
-              <ContextMenuSection seperator>
-                <ContextMenuItem variant={"destructive"}>
-                  Delete
-                </ContextMenuItem>
-              </ContextMenuSection>
-            </ContextMenuContent>
-          </ContextMenu>
+
         </div>
       </div>
 

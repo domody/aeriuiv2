@@ -69,7 +69,7 @@ const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
         ref={ref}
         className={cn(
           className,
-          "border-secondary overflow-hidden border-b transition-all",
+          "border-border overflow-hidden border-b transition-all",
         )}
         style={{
           height: isOpen ? `${contentHeight! + 40}px` : "2.5rem",

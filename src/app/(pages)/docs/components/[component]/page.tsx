@@ -18,14 +18,14 @@ export default async function ComponentPage({
   //     { name: "variant", type: "string", description: "Style variant" },
   //   ],
   // };
-  
+
   try {
     // Dynamically import the MDX file
     const Page = (await import(`@/app/content/components/${component}.mdx`))
       .default;
 
     return (
-      <div className="min-h-48 w-full max-w-full shrink overflow-hidden">
+      <div className="min-h-full w-full max-w-full shrink overflow-hidden">
         <Page />
         {/* <h1>{componentMetadata.name}</h1>
         <p>{componentMetadata.description}</p> */}
