@@ -33,7 +33,7 @@ export function Navbar() {
             <DropdownTrigger variant="ghost" size="icon">
               <Sun className="h-5 w-5" />
             </DropdownTrigger>
-            <DropdownMenu className="!min-w-36" position="right">
+            <DropdownMenu className="max-w-36 min-w-36" position="right">
               <DropdownSection>
                 <DropdownItem>
                   <Sun />
