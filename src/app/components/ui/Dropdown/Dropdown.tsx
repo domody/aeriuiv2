@@ -130,7 +130,7 @@ const dropdownMenuVariants = cva(
 );
 
 interface DropdownMenuProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends OptionListProps,
     VariantProps<typeof dropdownMenuVariants> {
   position?: "left" | "center" | "right";
   title?: string;
