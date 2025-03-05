@@ -2,9 +2,9 @@ import { OptionList, OptionListSection, OptionListItem } from "./OptionList";
 export { OptionList, OptionListSection, OptionListItem };
 
 import {
-  type OptionListProps,
-  type OptionListSectionProps,
-  type OptionListItemProps,
+  OptionListProps,
+  OptionListSectionProps,
+  OptionListItemProps,
 } from "./OptionList";
 export {
   type OptionListProps,

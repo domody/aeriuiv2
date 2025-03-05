@@ -10,10 +10,7 @@ interface OptionListProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const OptionList = React.forwardRef<HTMLDivElement, OptionListProps>(
-  (
-    { className, children, title, titleSeperator = true, ...props },
-    ref,
-  ) => {
+  ({ className, children, title, titleSeperator = true, ...props }, ref) => {
     return (
       <div
         ref={ref}
@@ -64,28 +61,27 @@ interface OptionListItemProps extends ButtonProps {
   shortcut?: string;
 }
 
-const OptionListItem = React.forwardRef<HTMLDivElement, OptionListItemProps>(
+const OptionListItem = React.forwardRef<HTMLButtonElement, OptionListItemProps>(
   ({ className, children, shortcut, variant = "ghost", ...props }, ref) => {
     return (
-      <div ref={ref} className="w-full">
-        <Button
-          className={cn(
-            "w-full justify-start rounded px-2",
-            variant === "destructive" &&
-              "hover:text-destructive-foreground text-destructive hover:bg-destructive bg-transparent",
-            className,
-          )}
-          variant={variant}
-          {...props}
-        >
-          {children}
-          {shortcut && (
-            <span className="text-muted-foreground ml-auto font-mono text-xs">
-              {shortcut}
-            </span>
-          )}
-        </Button>
-      </div>
+      <Button
+        ref={ref}
+        className={cn(
+          "w-full justify-start rounded px-2",
+          variant === "destructive" &&
+            "hover:text-destructive-foreground text-destructive hover:bg-destructive bg-transparent",
+          className,
+        )}
+        variant={variant}
+        {...props}
+      >
+        {children}
+        {shortcut && (
+          <span className="text-muted-foreground ml-auto font-mono text-xs">
+            {shortcut}
+          </span>
+        )}
+      </Button>
     );
   },
 );

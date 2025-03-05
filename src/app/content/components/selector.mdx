@@ -1,0 +1,26 @@
+import {
+  Selector,
+  SelectorTrigger,
+  SelectorContent,
+  SelectorContentItem,
+} from "aeriui/Selector";
+import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
+
+# Selector
+
+A customizable selector component.
+
+---
+
+<ComponentWrapper>
+  <Selector defaultValue="Apple">
+    <SelectorTrigger placeholder="Select Fruit..." />
+    <SelectorContent title="Fruits" checkEnd>
+      <SelectorContentItem value="Apple">Apple</SelectorContentItem>
+      <SelectorContentItem value="Orange">Orange</SelectorContentItem>
+      <SelectorContentItem value="Bananas">Bananas</SelectorContentItem>
+      <SelectorContentItem value="Pear">Pear</SelectorContentItem>
+      <SelectorContentItem value="Blueberry">Blueberry</SelectorContentItem>
+    </SelectorContent>
+  </Selector>
+</ComponentWrapper>

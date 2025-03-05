@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import { Button } from "aeriui/Button";
 import Link from "next/link";
 import GithubLogoWhite from "@/app/assets/brand/github/github-mark-white.svg";
 
 export default function Home() {
+
   return (
     <main className="min-h-screen">
       <div className="absolute top-0 left-0 -z-10 h-screen w-screen">
@@ -11,7 +14,7 @@ export default function Home() {
       </div>
       <div className="container mx-auto flex h-full min-h-screen flex-col items-start justify-start px-2 pt-64">
         <h1>aeri ui v2</h1>
-        <h3>free, copy-paste components built for nextjs.</h3>
+        <h3>free, copy-paste components built for react.</h3>
         <div className="mt-4 flex gap-2">
           <Button asChild>
             <Link href="/docs/components/accordion">Learn More</Link>
@@ -34,7 +37,6 @@ export default function Home() {
           </Button>
         </div>
         <div className="mt-8 flex space-x-8">
-
         </div>
       </div>
 

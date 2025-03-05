@@ -1,7 +1,13 @@
 "use client";
 
-import React, { SetStateAction, useRef } from "react";
-import { useState, useEffect, createContext, useContext } from "react";
+import React, {
+  SetStateAction,
+  useRef,
+  useState,
+  useEffect,
+  createContext,
+  useContext,
+} from "react";
 import { Button, ButtonProps } from "aeriui/Button";
 import { cn } from "@/app/lib/utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
@@ -19,7 +25,7 @@ interface DropdownContextProps {
   open: boolean;
   setOpen: React.Dispatch<SetStateAction<boolean>>;
   onHover: boolean;
-  triggerRef: React.RefObject<HTMLDivElement | null>;
+  triggerRef: React.RefObject<HTMLButtonElement | null>;
   menuRef: React.RefObject<HTMLDivElement | null>;
 }
 
@@ -33,7 +39,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
   ({ className, children, onHover = false, ...props }, ref) => {
     const [open, setOpen] = useState<boolean>(false);
 
-    const triggerRef = useRef<HTMLDivElement | null>(null);
+    const triggerRef = useRef<HTMLButtonElement | null>(null);
     const menuRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
@@ -81,7 +87,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
 );
 Dropdown.displayName = "Dropdown";
 
-const DropdownTrigger = React.forwardRef<HTMLDivElement, ButtonProps>(
+const DropdownTrigger = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, children, ...props }, ref) => {
     const context = useContext(DropdownContext);
     if (!context)
@@ -89,25 +95,21 @@ const DropdownTrigger = React.forwardRef<HTMLDivElement, ButtonProps>(
 
     const { open, setOpen, triggerRef } = context;
     return (
-      <div
+      <Button
         ref={(el) => {
           triggerRef.current = el;
           if (typeof ref === "function") ref(el);
           else if (ref) ref.current = el;
         }}
+        onClick={(e) => {
+          e.stopPropagation();
+          setOpen(!open);
+        }}
         className={cn("", className)}
+        {...props}
       >
-        <Button
-          onClick={(e) => {
-            e.stopPropagation();
-            setOpen(!open);
-          }}
-          className=""
-          {...props}
-        >
-          {children}
-        </Button>
-      </div>
+        {children}
+      </Button>
     );
   },
 );
@@ -177,7 +179,7 @@ const DropdownSection = React.forwardRef<
 });
 DropdownSection.displayName = "DropdownSection";
 
-const DropdownItem = React.forwardRef<HTMLDivElement, OptionListItemProps>(
+const DropdownItem = React.forwardRef<HTMLButtonElement, OptionListItemProps>(
   ({ className, children, ...props }, ref) => {
     return (
       <OptionListItem
