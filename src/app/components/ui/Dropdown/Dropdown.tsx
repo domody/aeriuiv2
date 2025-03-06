@@ -180,12 +180,23 @@ const DropdownSection = React.forwardRef<
 DropdownSection.displayName = "DropdownSection";
 
 const DropdownItem = React.forwardRef<HTMLButtonElement, OptionListItemProps>(
-  ({ className, children, ...props }, ref) => {
+  ({ className, children, onClick, ...props }, ref) => {
+    const context = useContext(DropdownContext);
+
+    if (!context) throw new Error("DropdownItem must be used in a Dropdown!");
+
+    const { setOpen } = context;
+
     return (
       <OptionListItem
         ref={ref}
         className={cn("w-full justify-start rounded px-2", className)}
         variant="ghost"
+        onClick={(e) => {
+          e.stopPropagation();
+          if (onClick) onClick(e);
+          setOpen(false);
+        }}
         {...props}
       >
         {children}
