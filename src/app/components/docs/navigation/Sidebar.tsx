@@ -1,6 +1,8 @@
 import { cn } from "@/app/lib/utils/cn";
 
-async function getFiles() {
+type FilesByFolder = Record<string, string[]>;
+
+async function getFiles(): Promise<FilesByFolder> {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_SITE_URL}/api/sidebar/getDocs`,
@@ -17,7 +19,7 @@ async function getFiles() {
 }
 
 export async function Sidebar({ className }: { className?: string }) {
-  const filesByFolder = await getFiles();
+  const filesByFolder: FilesByFolder = await getFiles();
 
   return (
     <div
