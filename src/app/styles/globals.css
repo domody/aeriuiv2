@@ -3,75 +3,75 @@
 @config "../../../tailwind.config.ts";
 /* Light mode (default) */
 :root {
-  --background: #f0f0f3; /* Soft gray with a cool blue tint */
-  --foreground: #15151a; /* Darker cool gray for text */
+  --background: 95.6% 0.004 286.32;
+  --foreground: 19.8% 0.01 285.46;
 
-  --primary: #1c1c22; /* Deep gray with a blue hue */
-  --primary-foreground: #ffffff;
+  --primary: 22.91% 0.0115 285.46;
+  --primary-foreground: 100% 0 0;
 
-  --secondary: #e3e4e8; /* Light gray with subtle blue */
-  --secondary-foreground: #1c1c22;
+  --secondary: 91.92% 0.0055 274.96;
+  --secondary-foreground: 22.91% 0.0115 285.46;
 
-  --destructive: #e63946;
-  --destructive-foreground: #ffffff;
+  --destructive: 61.22% 0.2082 22.24;
+  --destructive-foreground: 100% 0 0;
 
-  --accent: #d0d1d6; /* Cool gray with slight blue */
-  --accent-foreground: #1c1c22;
+  --accent: 86.14% 0.0069 277.15;
+  --accent-foreground: 22.91% 0.0115 285.46;
 
-  --muted: #e3e4e8;
-  --muted-foreground: #52525b;
+  --muted: 91.92% 0.0055 274.96;
+  --muted-foreground: 44.19% 0.0146 285.79;
 
-  --border: #c7c8cf; /* Soft cool gray */
-  --input: #b6b8c1; /* Muted cool gray */
-  --ring: #5a5f73; /* Darker cool gray-blue */
-
+  --border: 83.41% 0.0097 279.66;
+  --input: 78.37% 0.0129 276.05;
+  --ring: 48.86% 0.0327 274.11;
+  
   --pattern-fg: color-mix(in oklab, var(--color-white) 10%, transparent);
 }
 
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #08080a; /* Dark, blue-tinted black */
-    --foreground: #e6e6eb; /* Cool light gray */
+    --background: 13.54% 0.0047 285.76;
+    --foreground: 92.64% 0.0067 286.27;
 
-    --primary: #e6e6eb; /* Dark blue-gray */
-    --primary-foreground: #08080a;
+    --primary: 92.64% 0.0067 286.27;
+    --primary-foreground: 5% 0.01 250;
 
-    --secondary: #1e1e24; /* Dark cool gray */
-    --secondary-foreground: #e0e0e4;
+    --secondary: 23.76% 0.0114 285.5;
+    --secondary-foreground: 90.79% 0.0054 286.29;
 
-    --destructive: #e63946;
-    --destructive-foreground: #e6e6eb;
+    --destructive: 61.22% 0.2082 22.24;
+    --destructive-foreground: 92.64% 0.0067 286.27;
 
-    --accent: #2b2c33; /* Deep cool gray */
-    --accent-foreground: #e6e6eb;
+    --accent: 29.5% 0.0127 279.14;
+    --accent-foreground: 92.64% 0.0067 286.27;
 
-    --muted: #2b2c33;
-    --muted-foreground: #a1a1aa;
+    --muted: 29.5% 0.0127 279.14;
+    --muted-foreground: 71.18% 0.0129 286.07;
 
-    --border: #3f4048; /* Slightly lighter blue-gray */
-    --input: #4a4b56;
-    --ring: #6e7592; /* Darker steel blue */
+    --border: 37.36% 0.0137 280.05;
+    --input: 41.6% 0.0183 281.45;
+    --ring: 56.73% 0.0456 274.26;
   }
 }
 
 /* Tailwind v4 Theme Definitions */
 @theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
+  --color-background: oklch(var(--background));
+  --color-foreground: oklch(var(--foreground));
+  --color-primary: oklch(var(--primary));
+  --color-primary-foreground: oklch(var(--primary-foreground));
+  --color-secondary: oklch(var(--secondary));
+  --color-secondary-foreground: oklch(var(--secondary-foreground));
+  --color-destructive: oklch(var(--destructive));
+  --color-destructive-foreground: oklch(var(--destructive-foreground));
+  --color-accent: oklch(var(--accent));
+  --color-accent-foreground: oklch(var(--accent-foreground));
+  --color-muted: oklch(var(--muted));
+  --color-muted-foreground: oklch(var(--muted-foreground));
+  --color-border: oklch(var(--border));
+  --color-input: oklch(var(--input));
+  --color-ring: oklch(var(--ring));
 }
 
 @layer utilities {
@@ -110,7 +110,6 @@ h3 {
   color: var(--foreground);
   opacity: 0.84;
 }
-
 
 @media (prefers-color-scheme: dark) {
   html {

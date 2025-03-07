@@ -21,16 +21,27 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </pre>
     ),
-    code: ({ children }) => (
-      <SyntaxHighlighter
-        language="tsx"
-        style={vscDarkPlus}
-        className={`w-full !bg-transparent !p-4 [&>*]:!bg-transparent`}
-        customStyle={{ margin: 0, fontSize: 13 }}
-      >
-        {children}
-      </SyntaxHighlighter>
-    ),
+    code: ({
+      children,
+      className,
+    }: {
+      children: string;
+      className?: string;
+    }) => {
+      const language = className?.replace("language-", "") || "tsx"; // Extract language
+
+      return (
+        <SyntaxHighlighter
+          language={language}
+          style={vscDarkPlus}
+          className="w-full !bg-transparent !p-4 [&>*]:!bg-transparent"
+          customStyle={{ margin: 0, fontSize: 13 }}
+        >
+          {children}
+        </SyntaxHighlighter>
+      );
+    },
+
     ...components,
   };
 }
