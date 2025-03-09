@@ -122,6 +122,7 @@ function getCodeString(children: ReactNode): string {
         return (
           forwardRefComponent.render?.displayName ||
           forwardRefComponent.render?.name ||
+          (element.type as React.ComponentType).displayName ||
           "ForwardRefComponent"
         );
       }
