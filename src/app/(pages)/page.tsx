@@ -5,8 +5,6 @@ import { Button } from "aeriui/Button";
 import Link from "next/link";
 import GithubLogoWhite from "@/app/assets/brand/github/github-mark-white.svg";
 
-import { Tabs, TabList, Tab, TabContent } from "aeriui/Tabs";
-
 export default function Home() {
   return (
     <main className="min-h-screen">
