@@ -1,5 +1,12 @@
 import { notFound } from "next/navigation";
-
+import { Button } from "@/app/components/ui/Button";
+import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTitle,
+} from "aeriui/Accordion";
 export default async function ComponentPage({
   params,
 }: {
