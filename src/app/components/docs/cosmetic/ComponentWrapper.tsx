@@ -26,7 +26,6 @@ const ComponentWrapper = React.forwardRef<
       if (uiComponentName) return uiComponentName;
 
       if (typeof element.type === "function") {
-        console.log("Returning function component displayName or name");
         return (
           (element.type as React.ComponentType).displayName ||
           element.type.name ||
@@ -40,7 +39,6 @@ const ComponentWrapper = React.forwardRef<
         (element.type as { $$typeof?: symbol })?.$$typeof ===
           Symbol.for("react.forward_ref")
       ) {
-        console.log("Detected ForwardRef component.");
         const forwardRefComponent =
           element.type as React.ForwardRefExoticComponent<unknown> & {
             render?: React.ComponentType;
@@ -53,7 +51,7 @@ const ComponentWrapper = React.forwardRef<
           "ForwardRefComponent"
         );
       }
-      
+
       return "UnknownComponent";
     },
   });
