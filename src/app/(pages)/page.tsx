@@ -1,9 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "aeriui/Button";
 import Link from "next/link";
 import GithubLogoWhite from "@/app/assets/brand/github/github-mark-white.svg";
+
+import {
+  Button,
+} from "aeriui/index";
 
 export default function Home() {
   return (
@@ -35,8 +38,7 @@ export default function Home() {
             </Link>
           </Button>
         </div>
-        <div className="mt-8 flex space-x-8">
-        </div>
+        <div className="mt-8 flex max-w-[500px] space-x-8"></div>
       </div>
 
       {/* <div className="from-secondary/45 to-75% to-background min-h-screen bg-gradient-to-b"></div> */}

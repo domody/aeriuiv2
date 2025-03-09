@@ -109,7 +109,7 @@ const Tab = React.forwardRef<HTMLDivElement, TabProps>(
           else if (ref) ref.current = el;
         }}
         className={cn(
-          "hover:bg-accent/25 z-20 cursor-pointer rounded px-4 py-1 font-medium transition-all",
+          "hover:bg-accent/25 z-20 cursor-pointer rounded px-4 py-1 font-medium text-nowrap transition-all",
           className,
         )}
         onClick={() => {
