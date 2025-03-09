@@ -30,14 +30,16 @@ const ComponentWrapper = React.forwardRef<
           element.type as React.ForwardRefExoticComponent<unknown> & {
             render?: React.ComponentType;
           };
-  
+
         return (
+          (element.type as React.ComponentType).displayName ||
+          forwardRefComponent.displayName ||
           forwardRefComponent.render?.displayName ||
           forwardRefComponent.render?.name ||
           "ForwardRefComponent"
         );
       }
-      
+
       return (
         Object.entries(AeriUIComponents).find(
           ([, comp]) => comp === element.type,
