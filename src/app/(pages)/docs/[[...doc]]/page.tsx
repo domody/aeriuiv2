@@ -13,7 +13,7 @@ export default async function ComponentPage({
       .default;
 
     return (
-      <div className="prose min-h-full w-full max-w-full shrink overflow-hidden">
+      <div className="prose prose-h1:!text-foreground prose-h2:!text-foreground prose-h3:!text-foreground min-h-full w-full max-w-full shrink overflow-hidden">
         <Page />
       </div>
     );

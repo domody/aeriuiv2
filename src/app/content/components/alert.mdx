@@ -1,0 +1,50 @@
+import { Alert, AlertTitle, AlertDescription } from "aeriui/Alert";
+import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
+import { ComponentSourceCode } from "@/app/components/docs/cosmetic/ComponentSourceCode";
+import { Bell, CheckCircle2, CircleAlert, Trash2 } from "lucide-react";
+
+# Alert
+
+A customizable alert component.
+
+<ComponentWrapper>
+  <Alert>
+    <Bell className="size-4" />
+    <AlertTitle>New Update Available</AlertTitle>
+    <AlertDescription>
+      A new version of the app is available. Please refresh the page to get the
+      latest features and improvements.
+    </AlertDescription>
+  </Alert>
+</ComponentWrapper>
+
+---
+
+<ComponentWrapper>
+  <Alert variant={"success"}>
+    <CheckCircle2 className="size-4" />
+    <AlertTitle>Success!</AlertTitle>
+    <AlertDescription>
+      Your settings have been successfully saved. You can now leave this page
+      safely.
+    </AlertDescription>
+  </Alert>
+</ComponentWrapper>
+<ComponentWrapper>
+  <Alert variant={"warning"}>
+    <CircleAlert className="size-4" />
+    <AlertTitle>Are you sure?</AlertTitle>
+    <AlertDescription>
+      This action is not reversible. Are you sure you want to proceed?
+    </AlertDescription>
+  </Alert>
+</ComponentWrapper>
+<ComponentWrapper>
+  <Alert variant={"destructive"}>
+    <Trash2 className="size-4" />
+    <AlertTitle>Account Deleted.</AlertTitle>
+    <AlertDescription>
+      Your account has been deleted. This action is not reversible.
+    </AlertDescription>
+  </Alert>
+</ComponentWrapper>

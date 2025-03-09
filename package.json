@@ -25,6 +25,7 @@
     "postcss": "^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-element-to-jsx-string": "^17.0.0",
     "react-syntax-highlighter": "^15.6.1",
     "rehype-highlight": "^7.0.2",
     "tailwind-merge": "^3.0.2",

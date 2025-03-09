@@ -5,8 +5,9 @@ import { Button } from "aeriui/Button";
 import Link from "next/link";
 import GithubLogoWhite from "@/app/assets/brand/github/github-mark-white.svg";
 
-export default function Home() {
+import { Tabs, TabList, Tab, TabContent } from "aeriui/Tabs";
 
+export default function Home() {
   return (
     <main className="min-h-screen">
       <div className="absolute top-0 left-0 -z-10 h-screen w-screen">
@@ -37,6 +38,14 @@ export default function Home() {
           </Button>
         </div>
         <div className="mt-8 flex space-x-8">
+          <Tabs defaultValue={"Inbox"}>
+            <TabList>
+              <Tab value="Inbox">Inbox</Tab>
+              <Tab value="Drafts">Drafts</Tab>
+            </TabList>
+            <TabContent value="Inbox">Inbox Content</TabContent>
+            <TabContent value="Drafts">Drafts Content</TabContent>
+          </Tabs>
         </div>
       </div>
 
