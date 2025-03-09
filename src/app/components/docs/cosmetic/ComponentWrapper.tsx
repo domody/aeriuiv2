@@ -19,23 +19,42 @@ const ComponentWrapper = React.forwardRef<
         return element.type;
       }
 
+      if (typeof element.type === "function") {
+        console.log("Returning function component displayName or name");
+        return (
+          (element.type as React.ComponentType).displayName ||
+          element.type.name ||
+          "Component"
+        );
+      }
+
       if (
         typeof element.type === "object" &&
         element.type !== null &&
-        "$$typeof" in element.type &&
-        (element.type as Record<string, unknown>).$$typeof ===
+        (element.type as { $$typeof?: symbol })?.$$typeof ===
           Symbol.for("react.forward_ref")
       ) {
+        console.log("Detected ForwardRef component.");
         const forwardRefComponent =
           element.type as React.ForwardRefExoticComponent<unknown> & {
             render?: React.ComponentType;
           };
 
+        // Log render details
+        console.log("forwardRefComponent.render:", forwardRefComponent.render);
+        console.log(
+          "forwardRefComponent.render.displayName:",
+          forwardRefComponent.render?.displayName,
+        );
+        console.log(
+          "forwardRefComponent.render.name:",
+          forwardRefComponent.render?.name,
+        );
+
         return (
-          (element.type as React.ComponentType).displayName ||
-          forwardRefComponent.displayName ||
           forwardRefComponent.render?.displayName ||
           forwardRefComponent.render?.name ||
+          (element.type as React.ComponentType).displayName ||
           "ForwardRefComponent"
         );
       }
