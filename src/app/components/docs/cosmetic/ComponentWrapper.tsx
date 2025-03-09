@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { cn } from "@/app/lib/utils/cn";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
