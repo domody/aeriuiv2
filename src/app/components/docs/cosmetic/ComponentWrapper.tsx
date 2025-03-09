@@ -18,6 +18,26 @@ const ComponentWrapper = React.forwardRef<
       if (typeof element.type === "string") {
         return element.type;
       }
+
+      if (
+        typeof element.type === "object" &&
+        element.type !== null &&
+        "$$typeof" in element.type &&
+        (element.type as Record<string, unknown>).$$typeof ===
+          Symbol.for("react.forward_ref")
+      ) {
+        const forwardRefComponent =
+          element.type as React.ForwardRefExoticComponent<unknown> & {
+            render?: React.ComponentType;
+          };
+  
+        return (
+          forwardRefComponent.render?.displayName ||
+          forwardRefComponent.render?.name ||
+          "ForwardRefComponent"
+        );
+      }
+      
       return (
         Object.entries(AeriUIComponents).find(
           ([, comp]) => comp === element.type,
