@@ -66,11 +66,15 @@ function getCodeString(children: ReactNode): string {
       }
 
       if (typeof element.type === "function") {
-        return (
-          (element.type as React.ComponentType).displayName ||
-          element.type.name ||
-          "Component"
-        );
+        try {
+          return (
+            (element.type as React.ComponentType).displayName ||
+            element.type.name
+          );
+        } catch (error) {
+          console.error("Error resolving function component name:", error);
+          return "Component";
+        }
       }
 
       if (
@@ -79,15 +83,19 @@ function getCodeString(children: ReactNode): string {
         (element.type as { $$typeof?: symbol })?.$$typeof ===
           Symbol.for("react.forward_ref")
       ) {
-        const forwardRefComponent =
-          element.type as React.ForwardRefExoticComponent<unknown> & {
-            render?: React.ComponentType;
-          };
-        return (
-          forwardRefComponent.render?.displayName ||
-          forwardRefComponent.render?.name ||
-          "ForwardRefComponent"
-        );
+        try {
+          const forwardRefComponent =
+            element.type as React.ForwardRefExoticComponent<unknown> & {
+              render?: React.ComponentType;
+            };
+          return (
+            forwardRefComponent.render?.displayName! ||
+            forwardRefComponent.render?.name!
+          );
+        } catch (error) {
+          console.error("Error resolving ForwardRef component name:", error);
+          return "ForwardRefComponent";
+        }
       }
 
       return "UnknownComponent";
