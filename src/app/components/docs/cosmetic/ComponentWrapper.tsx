@@ -77,14 +77,16 @@ const ComponentWrapper = React.forwardRef<
         </div>
       </TabContent>
       <TabContent value="Code">
-        <SyntaxHighlighter
-          language="tsx"
-          style={vscDarkPlus}
-          className="w-ful !bg-secondary/50 border-border not-prose max-w-full overflow-x-scroll rounded border !p-4 [&>*]:!bg-transparent"
-          customStyle={{ margin: 0, fontSize: 13 }}
-        >
-          {codeString}
-        </SyntaxHighlighter>
+        <div className="relative">
+          <SyntaxHighlighter
+            language="tsx"
+            style={vscDarkPlus}
+            className="w-ful !bg-secondary/50 border-border not-prose max-w-full overflow-x-scroll rounded border !p-4 [&>*]:!bg-transparent"
+            customStyle={{ margin: 0, fontSize: 13 }}
+          >
+            {codeString}
+          </SyntaxHighlighter>
+        </div>
       </TabContent>
     </Tabs>
   );

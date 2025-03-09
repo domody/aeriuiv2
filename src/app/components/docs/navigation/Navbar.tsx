@@ -10,17 +10,30 @@ import {
   DropdownMenu,
   DropdownSection,
   DropdownItem,
-} from "aeriui/Dropdown";
+  Selector,
+  SelectorContent,
+  SelectorContentItem,
+  SelectorTrigger,
+} from "aeriui/index";
 
 import { Sun, Moon, Monitor } from "lucide-react";
 
 export function Navbar() {
   return (
-    <div className="bg-background border-border fixed top-0 left-0 z-50 h-14 w-full border-b">
+    <div className="bg-background border-border fixed top-0 left-0 z-99 h-14 w-full border-b">
       <div className="container mx-auto flex h-14 items-center justify-between">
-        <h2>
-          <Link href={`/`}>aeri</Link>
-        </h2>
+        <div className="flex space-x-8">
+          <h2>
+            <Link href={`/`}>aeri</Link>
+          </h2>
+          <Selector defaultValue="React" className="hidden">
+            <SelectorTrigger placeholder="Framework" />
+            <SelectorContent checkEnd>
+              <SelectorContentItem value="React">React</SelectorContentItem>
+              <SelectorContentItem value="Svelte">Svelte</SelectorContentItem>
+            </SelectorContent>
+          </Selector>
+        </div>
         <div className="flex items-center justify-end space-x-4">
           {links.map((link, index) => {
             return (

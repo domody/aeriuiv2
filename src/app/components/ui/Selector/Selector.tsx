@@ -36,8 +36,8 @@ interface SelectorContextProps {
 const SelectorContext = createContext<SelectorContextProps | null>(null);
 
 interface SelectorProps extends React.HTMLAttributes<HTMLDivElement> {
-  value: string | null;
   defaultValue?: string;
+  value?: string | null;
   onValueChange?: (value: string) => void;
 }
 
@@ -100,7 +100,7 @@ const Selector = React.forwardRef<HTMLDivElement, SelectorProps>(
           menuRef,
         }}
       >
-        <div ref={ref} className={cn("relative", className)} {...props}>
+        <div ref={ref} className={cn("relative z-99", className)} {...props}>
           {children}
         </div>
       </SelectorContext.Provider>
@@ -194,7 +194,7 @@ const SelectorContent = React.forwardRef<HTMLDivElement, SelectContentProps>(
         }}
         className={cn(
           selectorContentVariants({ position }),
-          "w-min min-w-full",
+          "z-100 w-min min-w-full",
           open ? "scale-100 opacity-100" : "scale-90 opacity-0",
           className,
         )}

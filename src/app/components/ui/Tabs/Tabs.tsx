@@ -56,7 +56,7 @@ const TabList = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "bg-background border-border relative flex w-min rounded border text-sm",
+        "bg-background border-border relative flex w-min rounded border p-px text-sm",
         className,
       )}
       {...props}
@@ -66,7 +66,7 @@ const TabList = React.forwardRef<
           width: `${active.width}px`,
           transform: `translateX(${active.x}px)`,
         }}
-        className="bg-accent absolute top-0 left-0 z-10 h-full rounded transition-all"
+        className="bg-accent absolute top-px left-0 z-10 h-[calc(100%-2px)] rounded-[calc(var(--radius)-1px)] transition-all"
       />
       {children}
     </div>

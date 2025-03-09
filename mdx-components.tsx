@@ -15,7 +15,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     hr: () => <hr className="border-border my-8" />,
     pre: ({ children }) => (
       <pre
-        className="bg-secondary/50 border-border not-prose mb-8 max-w-full overflow-x-scroll rounded-lg border p-0"
+        className="bg-secondary/50 border-border not-prose mb-8 max-w-full overflow-x-scroll rounded border p-0"
         style={{ scrollbarWidth: "none" }}
       >
         {children}
