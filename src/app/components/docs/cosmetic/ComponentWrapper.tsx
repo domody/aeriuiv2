@@ -89,8 +89,8 @@ function getCodeString(children: ReactNode): string {
               render?: React.ComponentType;
             };
           return (
-            forwardRefComponent.render?.displayName ||
-            forwardRefComponent.render?.name
+            forwardRefComponent.render?.displayName! ||
+            forwardRefComponent.render?.name!
           );
         } catch (error) {
           console.error("Error resolving ForwardRef component name:", error);
