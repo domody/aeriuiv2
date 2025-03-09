@@ -55,6 +55,9 @@ function getCodeString(children: ReactNode): string {
     showFunctions: true, 
     displayName: (element: React.ReactNode): string => {
       if (!React.isValidElement(element)) return "Unknown"; 
+      
+      console.log("Element Type: ", element.type)
+      console.log("Element: ", element)
 
       if (typeof element.type === "string") {
         return element.type;
