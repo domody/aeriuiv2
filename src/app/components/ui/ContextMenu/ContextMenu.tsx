@@ -23,8 +23,6 @@ interface ContextMenuContextProps {
 
 const ContextMenuContext = createContext<ContextMenuContextProps | null>(null);
 
-// interface ContextMenuProps extends React.HTMLAttributes<HTMLDivElement> {}
-
 const ContextMenu = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>

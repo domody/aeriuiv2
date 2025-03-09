@@ -38,14 +38,6 @@ export default function Home() {
           </Button>
         </div>
         <div className="mt-8 flex space-x-8">
-          <Tabs defaultValue={"Inbox"}>
-            <TabList>
-              <Tab value="Inbox">Inbox</Tab>
-              <Tab value="Drafts">Drafts</Tab>
-            </TabList>
-            <TabContent value="Inbox">Inbox Content</TabContent>
-            <TabContent value="Drafts">Drafts Content</TabContent>
-          </Tabs>
         </div>
       </div>
 

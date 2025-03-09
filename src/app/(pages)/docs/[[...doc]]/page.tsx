@@ -8,7 +8,6 @@ export default async function ComponentPage({
   const doc = (await params).doc;
 
   try {
-    // Dynamically import the MDX file
     const Page = (await import(`@/app/content/${doc[0]}/${doc[1]}.mdx`))
       .default;
 

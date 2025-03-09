@@ -27,7 +27,6 @@ export async function GET(
 
   const baseDir = path.join(process.cwd(), "src/app/components/ui");
 
-  // Helper function to recursively list all folders and files
   function listFilesRecursive(dir: string, depth = 0) {
     try {
       const entries = fs.readdirSync(dir, { withFileTypes: true });

@@ -5,8 +5,7 @@ import path from "path";
 export async function GET() {
   const directoryPath = path.join(process.cwd(), "src/app/content/");
 
-  // Define custom folder order
-  const customOrder = [
+  const folderOrder = [
     "getting-started",
     "installation",
     "customization",
@@ -27,7 +26,6 @@ export async function GET() {
           .readdirSync(folderPath)
           .filter((file) => fs.statSync(path.join(folderPath, file)).isFile());
 
-        // Check if order.json exists in the folder
         const orderFilePath = path.join(folderPath, "order.json");
         if (fs.existsSync(orderFilePath)) {
           try {
@@ -48,14 +46,14 @@ export async function GET() {
 
     const orderedResult: Record<string, string[]> = {};
 
-    customOrder.forEach((folder) => {
+    folderOrder.forEach((folder) => {
       if (unorderedResult[folder]) {
         orderedResult[folder] = unorderedResult[folder];
       }
     });
 
     Object.keys(unorderedResult).forEach((folder) => {
-      if (!customOrder.includes(folder)) {
+      if (!folderOrder.includes(folder)) {
         orderedResult[folder] = unorderedResult[folder];
       }
     });
