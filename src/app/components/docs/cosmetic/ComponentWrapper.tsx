@@ -1,15 +1,30 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { cn } from "@/app/lib/utils/cn";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import jsxToString from "react-element-to-jsx-string"; // Import this package
 import { Tabs, TabList, Tab, TabContent } from "aeriui/Tabs";
+
+import * as AeriUIComponents from "aeriui/index";
+
 const ComponentWrapper = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, children, ...props }, ref) => {
-  const codeString = getCodeString(children);
+  const codeString = jsxToString(children, {
+    displayName: (element: React.ReactNode): string => {
+      if (!React.isValidElement(element)) return "Unknown";
 
+      if (typeof element.type === "string") {
+        return element.type;
+      }
+      return (
+        Object.entries(AeriUIComponents).find(
+          ([, comp]) => comp === element.type,
+        )?.[0] || "UnknownComponent"
+      );
+    },
+  });
   return (
     <Tabs defaultValue="Preview" className="mb-8">
       <TabList>
@@ -46,45 +61,3 @@ const ComponentWrapper = React.forwardRef<
 ComponentWrapper.displayName = "ComponentWrapper";
 
 export { ComponentWrapper };
-
-function getCodeString(children: ReactNode): string {
-  return jsxToString(children, {
-    sortProps: true,
-    showFunctions: true,
-    displayName: (element: React.ReactNode): string => {
-      if (!React.isValidElement(element)) return "Unknown";
-
-      if (typeof element.type === "string") {
-        return element.type;
-      }
-
-      if (typeof element.type === "function") {
-        return (
-          (element.type as React.ComponentType).displayName ||
-          element.type.name ||
-          "Component"
-        );
-      }
-
-      if (
-        typeof element.type === "object" &&
-        element.type !== null &&
-        "$$typeof" in element.type &&
-        (element.type as Record<string, unknown>).$$typeof ===
-          Symbol.for("react.forward_ref")
-      ) {
-        const forwardRefComponent =
-          element.type as React.ForwardRefExoticComponent<unknown> & {
-            render?: React.ComponentType;
-          };
-        return (
-          forwardRefComponent.render?.displayName ||
-          forwardRefComponent.render?.name ||
-          "ForwardRefComponent"
-        );
-      }
-
-      return "UnknownComponent";
-    },
-  });
-}
