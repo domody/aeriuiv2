@@ -7,11 +7,30 @@ import { Tabs, TabList, Tab, TabContent } from "aeriui/Tabs";
 
 import * as AeriUIComponents from "aeriui/index";
 
+const findUsedComponents = (
+  element: React.ReactNode,
+  usedComponents: Set<string>,
+) => {
+  if (!React.isValidElement(element)) return;
+
+  if (typeof element.type !== "string") {
+    const foundComponent = Object.entries(AeriUIComponents).find(
+      ([, comp]) => comp === element.type,
+    );
+    if (foundComponent) usedComponents.add(foundComponent[0]);
+  }
+
+  if (element.props && element.props.children) {
+    React.Children.forEach(element.props.children, (child) =>
+      findUsedComponents(child, usedComponents),
+    );
+  }
+};
 const ComponentWrapper = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, children, ...props }, ref) => {
-  const codeString = jsxToString(children, {
+  let codeString = jsxToString(children, {
     displayName: (element: React.ReactNode): string => {
       if (!React.isValidElement(element)) return "Unknown";
 
@@ -56,6 +75,33 @@ const ComponentWrapper = React.forwardRef<
     },
   });
 
+  const usedComponents = new Set<string>();
+
+  React.Children.forEach(children, (child) =>
+    findUsedComponents(child, usedComponents),
+  );
+
+  const imports =
+    usedComponents.size > 0
+      ? `import {\n  ${[...usedComponents].join(",\n  ")}\n} from "aeriui/index";`
+      : "";
+
+  const indentation = `${" "}${" "}${" "}${" "}`;
+  codeString = codeString
+    .split("\n")
+    .map((line, index) => (index == 0 ? line : indentation + line))
+    .join("\n");
+
+  const formattedCode = `
+${imports}
+  
+export function ${[...usedComponents][0]}Demo() {
+  return (
+    ${codeString}
+  );
+}
+`.trim();
+
   return (
     <Tabs defaultValue="Preview" className="mb-8">
       <TabList>
@@ -81,10 +127,10 @@ const ComponentWrapper = React.forwardRef<
           <SyntaxHighlighter
             language="tsx"
             style={vscDarkPlus}
-            className="w-ful !bg-secondary/50 border-border not-prose max-w-full overflow-x-scroll rounded border !p-4 [&>*]:!bg-transparent"
+            className="w-ful !bg-secondary/50 border-border not-prose max-w-full max-h-200 overflow-x-scroll rounded border !p-4 [&>*]:!bg-transparent"
             customStyle={{ margin: 0, fontSize: 13 }}
           >
-            {codeString}
+            {formattedCode}
           </SyntaxHighlighter>
         </div>
       </TabContent>
