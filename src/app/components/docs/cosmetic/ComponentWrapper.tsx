@@ -19,15 +19,6 @@ const ComponentWrapper = React.forwardRef<
         return element.type;
       }
 
-      if (typeof element.type === "function") {
-        console.log("Returning function component displayName or name");
-        return (
-          (element.type as React.ComponentType).displayName ||
-          element.type.name ||
-          "Component"
-        );
-      }
-
       if (
         typeof element.type === "object" &&
         element.type !== null &&
