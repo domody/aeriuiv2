@@ -20,7 +20,10 @@ const findUsedComponents = (
     if (foundComponent) usedComponents.add(foundComponent[0]);
   }
 
-  if (element.props && element.props.children) {
+  if (
+    React.isValidElement<{ children?: React.ReactNode }>(element) &&
+    element.props.children
+  ) {
     React.Children.forEach(element.props.children, (child) =>
       findUsedComponents(child, usedComponents),
     );
@@ -127,7 +130,7 @@ export function ${[...usedComponents][0]}Demo() {
           <SyntaxHighlighter
             language="tsx"
             style={vscDarkPlus}
-            className="w-ful !bg-secondary/50 border-border not-prose max-w-full max-h-200 overflow-x-scroll rounded border !p-4 [&>*]:!bg-transparent"
+            className="w-ful !bg-secondary/50 border-border not-prose max-h-200 max-w-full overflow-x-scroll rounded border !p-4 [&>*]:!bg-transparent"
             customStyle={{ margin: 0, fontSize: 13 }}
           >
             {formattedCode}
