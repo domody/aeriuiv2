@@ -19,6 +19,21 @@ const ComponentWrapper = React.forwardRef<
         return element.type;
       }
 
+      const uiComponentName = Object.entries(AeriUIComponents).find(
+        ([, comp]) => comp === element.type,
+      )?.[0];
+
+      if (uiComponentName) return uiComponentName;
+
+      if (typeof element.type === "function") {
+        console.log("Returning function component displayName or name");
+        return (
+          (element.type as React.ComponentType).displayName ||
+          element.type.name ||
+          "Component"
+        );
+      }
+
       if (
         typeof element.type === "object" &&
         element.type !== null &&
@@ -38,14 +53,11 @@ const ComponentWrapper = React.forwardRef<
           "ForwardRefComponent"
         );
       }
-
-      return (
-        Object.entries(AeriUIComponents).find(
-          ([, comp]) => comp === element.type,
-        )?.[0] || "UnknownComponent"
-      );
+      
+      return "UnknownComponent";
     },
   });
+
   return (
     <Tabs defaultValue="Preview" className="mb-8">
       <TabList>
