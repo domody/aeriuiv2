@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import React, { ReactNode } from "react";
 import { cn } from "@/app/lib/utils/cn";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -56,8 +54,12 @@ function getCodeString(children: ReactNode): string {
     displayName: (element: React.ReactNode): string => {
       if (!React.isValidElement(element)) return "Unknown";
 
-      console.log("Element Type: ", element.type);
-      console.log("Element: ", element);
+      console.log("element.type:", element.type);
+      console.log(
+        "displayName:",
+        (element.type as React.ComponentType).displayName,
+      );
+      console.log("name:", (element.type as React.ComponentType).name);
 
       if (typeof element.type === "string") {
         return element.type;
@@ -74,15 +76,13 @@ function getCodeString(children: ReactNode): string {
       if (
         typeof element.type === "object" &&
         element.type !== null &&
-        (element.type as any).$$typeof?.toString() ===
-          "Symbol(react.forward_ref)"
+        (element.type as { $$typeof?: symbol })?.$$typeof ===
+          Symbol.for("react.forward_ref")
       ) {
         const forwardRefComponent =
-          element.type as React.ForwardRefExoticComponent<any> & {
+          element.type as React.ForwardRefExoticComponent<unknown> & {
             render?: React.ComponentType;
           };
-
-        console.log("Element Render", forwardRefComponent.render);
         return (
           forwardRefComponent.render?.displayName ||
           forwardRefComponent.render?.name ||
