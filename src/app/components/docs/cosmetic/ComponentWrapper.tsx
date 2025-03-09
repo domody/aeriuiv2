@@ -52,9 +52,30 @@ function getCodeString(children: ReactNode): string {
     sortProps: true,
     showFunctions: true,
     displayName: (element: React.ReactNode): string => {
-      if (!React.isValidElement(element)) return "Unknown";
+      if (!React.isValidElement(element)) {
+        console.log("Invalid React element:", element);
+        return "Unknown";
+      }
 
+      console.log("Valid React element:", element);
       console.log("element.type:", element.type);
+      console.log("element.type (typeof):", typeof element.type);
+
+      // Log whether it's a string, function, or object
+      console.log(
+        "Is element.type a string?",
+        typeof element.type === "string",
+      );
+      console.log(
+        "Is element.type a function?",
+        typeof element.type === "function",
+      );
+      console.log(
+        "Is element.type an object?",
+        typeof element.type === "object",
+      );
+
+      // Checking for displayName and name
       console.log(
         "displayName:",
         (element.type as React.ComponentType).displayName,
@@ -62,19 +83,17 @@ function getCodeString(children: ReactNode): string {
       console.log("name:", (element.type as React.ComponentType).name);
 
       if (typeof element.type === "string") {
+        console.log("Returning element.type as a string:", element.type);
         return element.type;
       }
 
       if (typeof element.type === "function") {
-        try {
-          return (
-            (element.type as React.ComponentType).displayName ||
-            element.type.name
-          );
-        } catch (error) {
-          console.error("Error resolving function component name:", error);
-          return "Component";
-        }
+        console.log("Returning function component displayName or name");
+        return (
+          (element.type as React.ComponentType).displayName ||
+          element.type.name ||
+          "Component"
+        );
       }
 
       if (
@@ -83,21 +102,31 @@ function getCodeString(children: ReactNode): string {
         (element.type as { $$typeof?: symbol })?.$$typeof ===
           Symbol.for("react.forward_ref")
       ) {
-        try {
-          const forwardRefComponent =
-            element.type as React.ForwardRefExoticComponent<unknown> & {
-              render?: React.ComponentType;
-            };
-          return (
-            forwardRefComponent.render?.displayName! ||
-            forwardRefComponent.render?.name!
-          );
-        } catch (error) {
-          console.error("Error resolving ForwardRef component name:", error);
-          return "ForwardRefComponent";
-        }
+        console.log("Detected ForwardRef component.");
+        const forwardRefComponent =
+          element.type as React.ForwardRefExoticComponent<unknown> & {
+            render?: React.ComponentType;
+          };
+
+        // Log render details
+        console.log("forwardRefComponent.render:", forwardRefComponent.render);
+        console.log(
+          "forwardRefComponent.render.displayName:",
+          forwardRefComponent.render?.displayName,
+        );
+        console.log(
+          "forwardRefComponent.render.name:",
+          forwardRefComponent.render?.name,
+        );
+
+        return (
+          forwardRefComponent.render?.displayName ||
+          forwardRefComponent.render?.name ||
+          "ForwardRefComponent"
+        );
       }
 
+      console.log("Returning UnknownComponent");
       return "UnknownComponent";
     },
   });
