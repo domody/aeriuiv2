@@ -52,12 +52,12 @@ export { ComponentWrapper };
 function getCodeString(children: ReactNode): string {
   return jsxToString(children, {
     sortProps: true,
-    showFunctions: true, 
+    showFunctions: true,
     displayName: (element: React.ReactNode): string => {
-      if (!React.isValidElement(element)) return "Unknown"; 
-      
-      console.log("Element Type: ", element.type)
-      console.log("Element: ", element)
+      if (!React.isValidElement(element)) return "Unknown";
+
+      console.log("Element Type: ", element.type);
+      console.log("Element: ", element);
 
       if (typeof element.type === "string") {
         return element.type;
@@ -81,6 +81,8 @@ function getCodeString(children: ReactNode): string {
           element.type as React.ForwardRefExoticComponent<any> & {
             render?: React.ComponentType;
           };
+
+        console.log("Element Render", forwardRefComponent.render);
         return (
           forwardRefComponent.render?.displayName ||
           forwardRefComponent.render?.name ||
