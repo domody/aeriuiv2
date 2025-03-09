@@ -40,17 +40,6 @@ const ComponentWrapper = React.forwardRef<
             render?: React.ComponentType;
           };
 
-        // Log render details
-        console.log("forwardRefComponent.render:", forwardRefComponent.render);
-        console.log(
-          "forwardRefComponent.render.displayName:",
-          forwardRefComponent.render?.displayName,
-        );
-        console.log(
-          "forwardRefComponent.render.name:",
-          forwardRefComponent.render?.name,
-        );
-
         return (
           forwardRefComponent.render?.displayName ||
           forwardRefComponent.render?.name ||
