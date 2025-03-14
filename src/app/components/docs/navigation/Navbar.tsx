@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 const links = [
@@ -17,6 +19,20 @@ import {
 } from "aeriui/index";
 
 import { Sun, Moon, Monitor } from "lucide-react";
+
+const applyToRoot = (className: string) => {
+  const current = Array.from(document.documentElement.classList);
+  document.documentElement.classList.remove(...current);
+
+  if (className === "system") {
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+    document.documentElement.classList.add(prefersDark ? "dark" : "light");
+  } else {
+    document.documentElement.classList.add(className);
+  }
+};
 
 export function Navbar() {
   return (
@@ -48,15 +64,15 @@ export function Navbar() {
             </DropdownTrigger>
             <DropdownMenu className="max-w-36 min-w-36" position="right">
               <DropdownSection>
-                <DropdownItem>
+                <DropdownItem onClick={() => applyToRoot("light")}>
                   <Sun />
                   Light
                 </DropdownItem>
-                <DropdownItem>
+                <DropdownItem onClick={() => applyToRoot("dark")}>
                   <Moon />
                   Dark
                 </DropdownItem>
-                <DropdownItem>
+                <DropdownItem onClick={() => applyToRoot("dark")}>
                   <Monitor />
                   System
                 </DropdownItem>

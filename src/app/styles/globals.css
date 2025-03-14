@@ -2,46 +2,40 @@
 @plugin "@tailwindcss/typography";
 @config "../../../tailwind.config.ts";
 
-:root {
-  --pattern-fg: color-mix(in oklab, var(--color-white) 10%, transparent);
-}
-
-/* Light mode (default) */
-:root {
-  --background: 95.6% 0.004 286.32;
-  --foreground: 19.8% 0.01 285.46;
-
-  --primary: 22.91% 0.0115 285.46;
-  --primary-foreground: 100% 0 0;
-
-  --secondary: 91.92% 0.0055 274.96;
-  --secondary-foreground: 22.91% 0.0115 285.46;
-
-  --destructive: 61.22% 0.2082 22.24;
-  --destructive-foreground: 100% 0 0;
-
-  --success: 55% 0.2 145; /* Green */
-  --success-foreground: 100% 0 0;
-
-  --warning: 80% 0.2 60; /* Yellow */
-  --warning-foreground: 22.91% 0.0115 285.46;
-
-  --accent: 86.14% 0.0069 277.15;
-  --accent-foreground: 22.91% 0.0115 285.46;
-
-  --muted: 91.92% 0.0055 274.96;
-  --muted-foreground: 44.19% 0.0146 285.79;
-
-  --border: 83.41% 0.0097 279.66;
-  --input: 78.37% 0.0129 276.05;
-  --ring: 48.86% 0.0327 274.11;
-
-  --radius: 0.25rem
-}
-
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
+    --background: 95.64% 0.0067 286.27;
+    --foreground: 13.54% 0.0047 285.76;
+
+    --primary: 5% 0.01 250;
+    --primary-foreground: 92.64% 0.0067 286.27;
+
+    --secondary: 23.76% 0.0114 285.5;
+    --secondary-foreground: 20.79% 0.0054 286.29;
+
+    --destructive: 61.22% 0.2082 22.24;
+    --destructive-foreground: var(--background);
+
+    --success: 78.49% 0.2002 153.29;
+    --success-foreground: var(--foreground);
+
+    --warning: 70% 0.22 60;
+    --warning-foreground: var(--foreground);
+
+    --accent: 89.5% 0.0127 279.14;
+    --accent-foreground: var(--foreground);
+
+    --muted: 89.5% 0.0127 279.14;
+    --muted-foreground: 51.18% 0.0129 286.07;
+
+    --border: 87.36% 0.0137 280.05;
+    --input: 41.6% 0.0183 281.45;
+    --ring: 56.73% 0.0456 274.26;
+
+    --radius: 0.25rem;
+  }
+
+  .dark {
     --background: 13.54% 0.0047 285.76;
     --foreground: 82.64% 0.0067 286.27;
 
@@ -70,6 +64,14 @@
     --input: 41.6% 0.0183 281.45;
     --ring: 56.73% 0.0456 274.26;
   }
+
+  :root {
+    --pattern-fg: color-mix(in oklab, var(--color-black) 20%, transparent);
+  }
+
+  .dark {
+    --pattern-fg: color-mix(in oklab, var(--color-white) 10%, transparent);
+  }
 }
 
 /* Tailwind v4 Theme Definitions */
@@ -93,6 +95,12 @@
   --color-border: oklch(var(--border));
   --color-input: oklch(var(--input));
   --color-ring: oklch(var(--ring));
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 @layer utilities {
