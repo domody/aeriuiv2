@@ -1,10 +1,8 @@
 import React from "react";
 import { cn } from "@/app/lib/utils/cn";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import jsxToString from "react-element-to-jsx-string"; // Import this package
 import { Tabs, TabList, Tab, TabContent } from "aeriui/Tabs";
-
+import { CodeBlock } from "./CodeBlock";
 import * as AeriUIComponents from "aeriui/index";
 
 const findUsedComponents = (
@@ -128,14 +126,7 @@ export function ${[...usedComponents][0]}Demo() {
       </TabContent>
       <TabContent value="Code">
         <div className="relative">
-          <SyntaxHighlighter
-            language="tsx"
-            style={vscDarkPlus}
-            className="w-ful !bg-secondary/50 border-border not-prose max-h-200 max-w-full overflow-x-scroll rounded border !p-4 [&>*]:!bg-transparent"
-            customStyle={{ margin: 0, fontSize: 13 }}
-          >
-            {formattedCode}
-          </SyntaxHighlighter>
+          <CodeBlock code={formattedCode} />
         </div>
       </TabContent>
     </Tabs>

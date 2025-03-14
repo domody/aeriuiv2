@@ -10,7 +10,7 @@ export function CodeBlock({
 }) {
   return (
     <div
-      className="bg-secondary/50 border-border max-w-full overflow-x-scroll rounded border p-2"
+      className="bg-secondary border-border max-w-full overflow-x-scroll rounded border p-2"
       style={{ scrollbarWidth: "none" }}
     >
       <SyntaxHighlighter

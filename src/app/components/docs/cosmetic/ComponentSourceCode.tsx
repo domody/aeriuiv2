@@ -1,6 +1,4 @@
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
-
+import { CodeBlock } from "./CodeBlock";
 async function getSourceCode(): Promise<string> {
   const doc = "context-menu";
   try {
@@ -37,21 +35,7 @@ export async function ComponentSourceCode({
       return <p className="text-red-500">Error loading code.</p>;
     }
 
-    return (
-      <div
-        className="bg-secondary/50 border-border max-w-full max-h-150 overflow-x-scroll rounded border p-2"
-        style={{ scrollbarWidth: "none" }}
-      >
-        <SyntaxHighlighter
-          language="tsx"
-          style={vscDarkPlus}
-          className="w-full max-w-full overflow-x-scroll !bg-transparent !p-4"
-          customStyle={{ margin: 0, fontSize: 13, scrollbarWidth: "none" }}
-        >
-          {data}
-        </SyntaxHighlighter>
-      </div>
-    );
+    return <CodeBlock code={data} />;
   } catch (error) {
     console.error("Error fetching component code: ", error);
     return <p className="text-red-500">Failed to fetch component code.</p>;

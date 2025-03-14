@@ -25,13 +25,12 @@ const applyToRoot = (className: string) => {
   document.documentElement.classList.remove(...current);
 
   if (className === "system") {
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-    document.documentElement.classList.add(prefersDark ? "dark" : "light");
-  } else {
-    document.documentElement.classList.add(className);
+    className = window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
   }
+  document.documentElement.className = className;
+  localStorage.setItem("theme", className);
 };
 
 export function Navbar() {
