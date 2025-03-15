@@ -1,6 +1,5 @@
 import { CodeBlock } from "./CodeBlock";
-async function getSourceCode(): Promise<string> {
-  const doc = "context-menu";
+async function getSourceCode(doc: string): Promise<string> {
   try {
     const formattedDoc = doc
       .split("-")
@@ -14,10 +13,10 @@ async function getSourceCode(): Promise<string> {
 
     if (!response.ok) throw new Error("Failed to fetch file");
 
-    return await response.text(); // Convert response to string
+    return await response.text();
   } catch (error) {
     console.error(error);
-    return ""; // Return empty string on error
+    return "";
   }
 }
 
@@ -29,7 +28,7 @@ export async function ComponentSourceCode({
   component,
 }: ComponentSourceCodeProps) {
   try {
-    const data = await getSourceCode();
+    const data = await getSourceCode(component);
 
     if (!data) {
       return <p className="text-red-500">Error loading code.</p>;
