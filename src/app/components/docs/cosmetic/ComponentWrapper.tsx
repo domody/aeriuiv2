@@ -4,6 +4,7 @@ import jsxToString from "react-element-to-jsx-string"; // Import this package
 import { Tabs, TabList, Tab, TabContent } from "aeriui/Tabs";
 import { CodeBlock } from "./CodeBlock";
 import * as AeriUIComponents from "aeriui/index";
+import { Eye, Terminal } from "lucide-react";
 
 const findUsedComponents = (
   element: React.ReactNode,
@@ -107,8 +108,12 @@ export function ${[...usedComponents][0]}Demo() {
   return (
     <Tabs defaultValue="Preview" className="mb-8">
       <TabList>
-        <Tab value="Preview">Preview</Tab>
-        <Tab value="Code">Code</Tab>
+        <Tab value="Preview">
+          <Eye /> Preview
+        </Tab>
+        <Tab value="Code">
+          <Terminal /> Code
+        </Tab>
       </TabList>
       <TabContent value="Preview">
         <div
