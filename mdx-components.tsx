@@ -2,6 +2,11 @@ import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import { CodeBlock } from "@/app/components/docs/cosmetic/CodeBlock";
 
+interface CodeElementProps {
+  className?: string;
+  children: string;
+}
+
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => <h1 className="mb-2">{children}</h1>,
@@ -16,7 +21,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Handle fenced code blocks (triple backticks)
     pre: ({ children }) => {
-      const codeElement = children as React.ReactElement;
+      const codeElement = children as React.ReactElement<CodeElementProps>;
 
       const language =
         codeElement.props.className?.replace("language-", "") || "tsx";
@@ -29,7 +34,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     code: ({ children }) => {
       console.log("INLINE CODE CHILDREN:", children);
       return (
-        <code className="bg-muted rounded px-1 py-0.5 font-mono text-sm not-prose">
+        <code className="bg-muted not-prose rounded px-1 py-0.5 font-mono text-sm">
           {children}
         </code>
       );
