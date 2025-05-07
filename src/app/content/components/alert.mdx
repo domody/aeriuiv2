@@ -1,11 +1,13 @@
 import { Alert, AlertTitle, AlertDescription } from "aeriui/Alert";
 import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
-import { ComponentSourceCode } from "@/app/components/docs/cosmetic/ComponentSourceCode";
+import { InstallationGuide } from "@/app/components/docs/cosmetic/InstallationGuide";
 import { Bell, CheckCircle2, CircleAlert, Trash2 } from "lucide-react";
 
 # Alert
 
 A customizable alert component.
+
+<InstallationGuide component={"Alert"} />
 
 <ComponentWrapper>
   <Alert>
@@ -17,7 +19,7 @@ A customizable alert component.
     </AlertDescription>
   </Alert>
 </ComponentWrapper>
-
+---
 <ComponentWrapper>
   <Alert variant={"success"}>
     <CheckCircle2 className="size-4" />

@@ -4,25 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import GithubLogoWhite from "@/app/assets/brand/github/github-mark-white.svg";
 
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownSection,
-  DropdownItem,
-} from "aeriui/Dropdown";
-import {
-  User,
-  CreditCard,
-  Settings,
-  Keyboard,
-  LogOut,
-  Trash2,
-} from "lucide-react";
-
-import { Button } from "aeriui/index";
+import { Button } from "aeriui/Button";
+import { Input } from "@/app/components/ui/Input";
+import { useState } from "react";
 
 export default function Home() {
+  const [email, setEmail] = useState<string>("");
+
   return (
     <main className="min-h-screen">
       <div className="absolute top-0 left-0 -z-10 h-screen w-screen">
@@ -53,39 +41,23 @@ export default function Home() {
           </Button>
         </div>
         <div className="mt-8 flex max-w-[500px] space-x-8">
-          <Dropdown>
-            <DropdownTrigger variant="outline">Open</DropdownTrigger>
-            <DropdownMenu title="My Account">
-              <DropdownSection seperator>
-                <DropdownItem>
-                  <User />
-                  Profile
-                </DropdownItem>
-                <DropdownItem disabled>
-                  <CreditCard />
-                  Billing
-                </DropdownItem>
-                <DropdownItem>
-                  <Settings />
-                  Settings
-                </DropdownItem>
-                <DropdownItem>
-                  <Keyboard />
-                  Keyboard Shortcuts
-                </DropdownItem>
-              </DropdownSection>
-              <DropdownSection>
-                <DropdownItem>
-                  <LogOut />
-                  Log out
-                </DropdownItem>
-                <DropdownItem variant={"destructive"}>
-                  <Trash2 />
-                  Delete Account
-                </DropdownItem>
-              </DropdownSection>
-            </DropdownMenu>
-          </Dropdown>
+          <Input
+            className="w-[500px]"
+            type="email"
+            label="Email"
+            labelType="floating"
+            placeholder="example@email.com"
+          />
+          <Input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-[500px]"
+            type="email"
+            label="Email"
+            labelType="stationary"
+            placeholder="example@email.com"
+          />
+          {email}
         </div>
       </div>
 

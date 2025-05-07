@@ -130,7 +130,7 @@ const SelectorTrigger = React.forwardRef<
         if (typeof ref === "function") ref(el);
         else if (ref) ref.current = el;
       }}
-      className={cn("min-w-[200px] justify-between px-4", className)}
+      className={cn("min-w-[200px] h-10 justify-between px-4", className)}
       variant={"outline"}
       onClick={(e) => {
         e.stopPropagation();

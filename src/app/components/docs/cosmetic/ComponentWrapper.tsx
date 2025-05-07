@@ -3,8 +3,8 @@ import { cn } from "@/app/lib/utils/cn";
 import jsxToString from "react-element-to-jsx-string"; // Import this package
 import { Tabs, TabList, Tab, TabContent } from "aeriui/Tabs";
 import { CodeBlock } from "./CodeBlock";
-import * as AeriUIComponents from "aeriui/index";
 import { Eye, Terminal } from "lucide-react";
+import * as AeriUIComponents from "aeriui/index";
 
 const findUsedComponents = (
   element: React.ReactNode,
@@ -13,10 +13,20 @@ const findUsedComponents = (
   if (!React.isValidElement(element)) return;
 
   if (typeof element.type !== "string") {
-    const foundComponent = Object.entries(AeriUIComponents).find(
-      ([, comp]) => comp === element.type,
-    );
-    if (foundComponent) usedComponents.add(foundComponent[0]);
+    let foundKey: keyof typeof AeriUIComponents | undefined;
+
+    for (const key of Object.keys(AeriUIComponents) as Array<
+      keyof typeof AeriUIComponents
+    >) {
+      if (AeriUIComponents[key] === element.type) {
+        foundKey = key;
+        break;
+      }
+    }
+
+    if (foundKey) {
+      usedComponents.add(foundKey);
+    }
   }
 
   if (
@@ -41,9 +51,16 @@ const ComponentWrapper = React.forwardRef<
         return element.type;
       }
 
-      const uiComponentName = Object.entries(AeriUIComponents).find(
-        ([, comp]) => comp === element.type,
-      )?.[0];
+      let uiComponentName = undefined;
+
+      for (const key of Object.keys(AeriUIComponents) as Array<
+        keyof typeof AeriUIComponents
+      >) {
+        if (AeriUIComponents[key] === element.type) {
+          uiComponentName = key;
+          break;
+        }
+      }
 
       if (uiComponentName) return uiComponentName;
 

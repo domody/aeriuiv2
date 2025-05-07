@@ -1,11 +1,13 @@
 import { Button } from "aeriui/Button";
 import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
+import { InstallationGuide } from "@/app/components/docs/cosmetic/InstallationGuide";
 import { Moon } from "lucide-react";
-import { ComponentSourceCode } from "@/app/components/docs/cosmetic/ComponentSourceCode";
 
 # Button
 
 A customizable button component.
+
+<InstallationGuide component={"Button"} />
 
 <ComponentWrapper>
   <Button>Click Me</Button>
@@ -13,16 +15,18 @@ A customizable button component.
 
 ---
 
-## Usage
-
-### A destructive variant
-
+<ComponentWrapper>
+  <Button variant="secondary">Click me</Button>
+</ComponentWrapper>
+<ComponentWrapper>
+  <Button variant="outline">Click me</Button>
+</ComponentWrapper>
+<ComponentWrapper>
+  <Button variant="ghost">Click me</Button>
+</ComponentWrapper>
 <ComponentWrapper>
   <Button variant="destructive">Delete account</Button>
 </ComponentWrapper>
-
-### Icon Only
-
 <ComponentWrapper>
   <Button variant="ghost" size="icon">
     <Moon />
