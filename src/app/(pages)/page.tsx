@@ -5,11 +5,6 @@ import Link from "next/link";
 import GithubLogoWhite from "@/app/assets/brand/github/github-mark-white.svg";
 
 import { Button } from "aeriui/Button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/app/components/ui/Tooltip";
 
 export default function Home() {
   return (
