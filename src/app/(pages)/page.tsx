@@ -42,14 +42,6 @@ export default function Home() {
           </Button>
         </div>
         <div className="mt-8 flex max-w-[500px] space-x-8">
-          <Tooltip>
-            <TooltipTrigger>
-              <Button variant={"outline"}>Add</Button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Add to library</p>
-            </TooltipContent>
-          </Tooltip>
         </div>
       </div>
 
