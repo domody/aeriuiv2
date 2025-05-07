@@ -1,0 +1,29 @@
+# Adding Components
+
+AeriUI is designed to make it simple and lightweight to add components to your project. This page will cover how to add components, either individually or all at once, using the CLI. Of course, component code is open-source and can also be copy-pasted directly from the individual documentation pages into your project, without needing to run any commands.
+
+## Individual Components
+
+Each individual component can be installed by running:
+
+```bash
+npx aeriui@latest add <component>
+```
+
+Where `<component>` is the name of the component, which follows PascalCase conventions. Each components documentation page will also show the exact CLI command to run to add it to your project.
+
+If you don't want to run a CLI command to add a component to your project, each components source code can be found on it's documentation page, which can be copy-pasted directley into your project. The only prerequisites for any component will be:
+
+- React & Typescript
+- Optional - Lucide Icons (sometimes)
+- Other aeriui components, often the `Button` component.
+
+You will be able to what is required by each component by checking the import statements at the top of the source code.
+
+## Adding every component
+
+Optionally, every component available can be installed at once by running:
+
+```bash
+npx aeriui@latest add *
+```

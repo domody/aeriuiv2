@@ -1,6 +1,4 @@
 import type { MDXComponents } from "mdx/types";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Link from "next/link";
 import { CodeBlock } from "@/app/components/docs/cosmetic/CodeBlock";
 
@@ -15,17 +13,26 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </Link>
     ),
     hr: () => <hr className="border-border my-8" />,
-    pre: ({ children }) => <>{children}</>,
-    code: ({
-      children,
-      className,
-    }: {
-      children: string;
-      className?: string;
-    }) => {
-      const language = className?.replace("language-", "") || "tsx"; // Extract language
 
-      return <CodeBlock code={children} language={language} />;
+    // Handle fenced code blocks (triple backticks)
+    pre: ({ children }) => {
+      const codeElement = children as React.ReactElement;
+
+      const language =
+        codeElement.props.className?.replace("language-", "") || "tsx";
+      const codeString = codeElement.props.children.trim();
+
+      return <CodeBlock code={codeString} language={language} />;
+    },
+
+    // Handle inline code (`inline`)
+    code: ({ children }) => {
+      console.log("INLINE CODE CHILDREN:", children);
+      return (
+        <code className="bg-muted rounded px-1 py-0.5 font-mono text-sm not-prose">
+          {children}
+        </code>
+      );
     },
 
     ...components,
