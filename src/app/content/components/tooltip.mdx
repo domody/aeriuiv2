@@ -1,0 +1,47 @@
+import { Tooltip, TooltipTrigger, TooltipContent } from "aeriui/Tooltip";
+import { Button } from "aeriui/Button";
+import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
+import { InstallationGuide } from "@/app/components/docs/cosmetic/InstallationGuide";
+import { Plus, Trash2 } from "lucide-react";
+
+# Tooltip
+
+A customizable tooltip component.
+
+<InstallationGuide component={"Tooltip"} />
+
+<ComponentWrapper>
+  <Tooltip>
+    <TooltipTrigger>
+      <Button variant={"outline"}>Hover</Button>
+    </TooltipTrigger>
+    <TooltipContent>
+      <p>This is a tooltip</p>
+    </TooltipContent>
+  </Tooltip>
+</ComponentWrapper>
+---
+<ComponentWrapper>
+  <Tooltip>
+    <TooltipTrigger>
+      <Button variant={"outline"} size={"icon"}>
+        <Plus />
+      </Button>
+    </TooltipTrigger>
+    <TooltipContent position={"bottom-center"} variant={"secondary"}>
+      <p>Add to library</p>
+    </TooltipContent>
+  </Tooltip>
+</ComponentWrapper>
+<ComponentWrapper>
+  <Tooltip>
+    <TooltipTrigger>
+      <Button variant={"destructive"} size={"icon"}>
+        <Trash2 />
+      </Button>
+    </TooltipTrigger>
+    <TooltipContent position={"right-center"} variant={"destructive"}>
+      <p>Delete Account</p>
+    </TooltipContent>
+  </Tooltip>
+</ComponentWrapper>

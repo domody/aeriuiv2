@@ -48,3 +48,4 @@ export {
 } from "./Selector";
 export { Slot } from "./Slot";
 export { Tab, TabContent, TabList, Tabs } from "./Tabs";
+export { Tooltip, TooltipTrigger, TooltipContent } from "./Tooltip";
