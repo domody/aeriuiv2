@@ -155,7 +155,9 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
         }}
         className={cn(
           dropdownMenuVariants({ position }),
-          open ? "scale-100 opacity-100" : "scale-90 opacity-0",
+          open
+            ? "scale-100 opacity-100"
+            : "pointer-events-none scale-90 opacity-0",
           className,
         )}
         {...props}
