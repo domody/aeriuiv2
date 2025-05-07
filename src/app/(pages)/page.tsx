@@ -5,12 +5,8 @@ import Link from "next/link";
 import GithubLogoWhite from "@/app/assets/brand/github/github-mark-white.svg";
 
 import { Button } from "aeriui/Button";
-import { Input } from "@/app/components/ui/Input";
-import { useState } from "react";
 
 export default function Home() {
-  const [email, setEmail] = useState<string>("");
-
   return (
     <main className="min-h-screen">
       <div className="absolute top-0 left-0 -z-10 h-screen w-screen">
@@ -40,25 +36,7 @@ export default function Home() {
             </Link>
           </Button>
         </div>
-        <div className="mt-8 flex max-w-[500px] space-x-8">
-          <Input
-            className="w-[500px]"
-            type="email"
-            label="Email"
-            labelType="floating"
-            placeholder="example@email.com"
-          />
-          <Input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-[500px]"
-            type="email"
-            label="Email"
-            labelType="stationary"
-            placeholder="example@email.com"
-          />
-          {email}
-        </div>
+        <div className="mt-8 flex max-w-[500px] space-x-8"></div>
       </div>
 
       {/* <div className="from-secondary/45 to-75% to-background min-h-screen bg-gradient-to-b"></div> */}
