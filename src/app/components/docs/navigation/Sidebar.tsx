@@ -1,4 +1,6 @@
 import { cn } from "@/app/lib/utils/cn";
+import Link from "next/link";
+import { Button } from "@/app/components/ui";
 
 type FilesByFolder = Record<string, string[]>;
 
@@ -24,7 +26,7 @@ export async function Sidebar({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "border-border bg-background fixed top-14 z-50 flex min-h-screen w-48 shrink-0 flex-col border-r pt-8",
+        "border-border bg-background fixed top-14 z-50 flex min-h-screen w-48 shrink-0 flex-col border-r pt-8 pr-2",
         className,
       )}
     >
@@ -33,10 +35,10 @@ export async function Sidebar({ className }: { className?: string }) {
       ) : (
         Object.entries(filesByFolder).map(([folder, files]) => (
           <div key={folder} className="mb-4">
-            {/* Convert folder name to a formatted title */}
-            <p className="font-bold capitalize">{folder.replace("-", " ")}</p>
+            <p className="text-sm font-bold capitalize">
+              {folder.replace("-", " ")}
+            </p>
 
-            {/* List files inside the folder */}
             <div className="mt-1 ml-2 flex flex-col">
               {files.map((file: string, index: number) => {
                 const fileName =
@@ -50,13 +52,14 @@ export async function Sidebar({ className }: { className?: string }) {
                 const fileSlug = file.replace(".mdx", "");
 
                 return (
-                  <a
+                  <Button
                     key={index}
-                    className="text-muted-foreground hover:text-secondary-foreground mb-1 text-sm transition-all"
-                    href={`/docs/${folder}/${fileSlug}`}
+                    variant={"ghost"}
+                    className="justify-start text-sm"
+                    asChild
                   >
-                    {fileName}
-                  </a>
+                    <Link href={`/docs/${folder}/${fileSlug}`}>{fileName}</Link>
+                  </Button>
                 );
               })}
             </div>

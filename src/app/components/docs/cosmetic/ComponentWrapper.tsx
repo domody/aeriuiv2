@@ -103,7 +103,7 @@ const ComponentWrapper = React.forwardRef<
 
   const imports =
     usedComponents.size > 0
-      ? `import {\n  ${[...usedComponents].join(",\n  ")}\n} from "aeriui/index";`
+      ? `import {\n  ${[...usedComponents].join(",\n  ")}\n} from "aeriui/${[...usedComponents][0]}";`
       : "";
 
   const indentation = `${" "}${" "}${" "}${" "}`;
