@@ -36,8 +36,7 @@ export default function Home() {
             </Link>
           </Button>
         </div>
-        <div className="mt-8 flex max-w-[500px] space-x-8">
-        </div>
+        <div className="mt-8 flex w-[400px] space-x-8"></div>
       </div>
 
       {/* <div className="from-secondary/45 to-75% to-background min-h-screen bg-gradient-to-b"></div> */}

@@ -46,6 +46,7 @@ export {
   SelectorContentItem,
   SelectorTrigger,
 } from "./Selector";
+export { Separator } from "./Separator";
 export { Slot } from "./Slot";
 export { Tab, TabContent, TabList, Tabs } from "./Tabs";
 export { Tooltip, TooltipTrigger, TooltipContent } from "./Tooltip";

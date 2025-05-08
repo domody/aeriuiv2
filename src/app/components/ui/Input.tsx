@@ -41,11 +41,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div
-        className={
+        className={`w-full ${
           stationaryLabel
             ? "flex flex-col-reverse items-start justify-start"
             : "relative h-10"
-        }
+        }`}
       >
         <input
           ref={ref}
@@ -59,7 +59,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         <p
-          className={`peer peer-invalid:peer-not-focus:text-destructive text-sm pointer-events-none ${
+          className={`peer peer-invalid:peer-not-focus:text-destructive pointer-events-none text-sm ${
             stationaryLabel
               ? "mb-1 font-medium"
               : "bg-background absolute left-2 px-1 opacity-50 transition-all"
