@@ -31,7 +31,7 @@ export function CodeBlock({
 
   return (
     <div
-      className="bg-secondary border-border relative mb-8 max-h-150 max-w-full overflow-x-scroll rounded border p-2"
+      className="border-border relative mb-8 max-h-150 max-w-full overflow-x-scroll rounded border bg-[oklch(23.76%_0.0114_285.5deg)] p-2"
       style={{ scrollbarWidth: "none" }}
     >
       <Button
