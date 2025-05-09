@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 const links = [
-  { title: "Docs", link: "/docs/installation" },
+  { title: "Docs", link: "/docs/getting-started/introduction" },
   { title: "Components", link: "/docs/components/accordion" },
 ];
 import {
@@ -16,9 +16,10 @@ import {
   SelectorContent,
   SelectorContentItem,
   SelectorTrigger,
+  Button,
 } from "aeriui/index";
 
-import { Sun, Moon, Monitor } from "lucide-react";
+import { Sun, Moon, Monitor, Menu } from "lucide-react";
 
 const applyToRoot = (className: string) => {
   const current = Array.from(document.documentElement.classList);
@@ -36,7 +37,7 @@ const applyToRoot = (className: string) => {
 export function Navbar() {
   return (
     <div className="bg-background border-border fixed top-0 left-0 z-99 h-14 w-full border-b">
-      <div className="container mx-auto flex h-14 items-center justify-between">
+      <div className="container mx-auto flex h-14 items-center justify-between px-8 sm:px-4">
         <div className="flex space-x-8">
           <h2>
             <Link href={`/`}>aeri</Link>
@@ -50,9 +51,12 @@ export function Navbar() {
           </Selector>
         </div>
         <div className="flex items-center justify-end space-x-4">
+          <Button variant={"ghost"} size={"icon"} className="sm:hidden">
+            <Menu />
+          </Button>
           {links.map((link, index) => {
             return (
-              <Link key={index} href={link.link}>
+              <Link className="hidden sm:block" key={index} href={link.link}>
                 <p className={`!opacity-100 transition-all`}>{link.title}</p>
               </Link>
             );

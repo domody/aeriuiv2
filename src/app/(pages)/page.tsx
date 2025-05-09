@@ -12,7 +12,7 @@ export default function Home() {
       <div className="absolute top-0 left-0 -z-10 h-screen w-screen">
         <div className="bg-dots h-full w-full" />
       </div>
-      <div className="container mx-auto flex h-full min-h-screen flex-col items-start justify-start px-2 pt-64">
+      <div className="container mx-auto flex h-full min-h-screen flex-col items-start justify-start px-8 sm:px-4 pt-64">
         <h1>aeri ui v2</h1>
         <h3>free, copy-paste components built for react.</h3>
         <div className="mt-4 flex gap-2">

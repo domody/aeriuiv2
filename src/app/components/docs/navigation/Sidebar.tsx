@@ -26,7 +26,7 @@ export async function Sidebar({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "border-border bg-background fixed top-14 z-50 flex min-h-screen w-48 shrink-0 flex-col border-r pt-8 pr-2",
+        "border-border bg-background fixed top-14 z-50 hidden min-h-screen w-48 shrink-0 flex-col border-r pt-8 pr-2 pl-4 sm:flex",
         className,
       )}
     >
