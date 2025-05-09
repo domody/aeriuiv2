@@ -8,6 +8,7 @@ export { Alert, AlertDescription, AlertTitle } from "./Alert";
 export { Button, type ButtonProps, buttonVariants } from "./Button";
 export { Badge } from "./Badge";
 export { Card, CardContent, CardFooter, CardHeader } from "./Card";
+export { Checkbox } from "./Checkbox";
 export {
   ContextMenu,
   ContextMenuContent,
