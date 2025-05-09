@@ -1,38 +1,18 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTitle,
-} from "aeriui/Accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTitle } from "aeriui/Accordion";
 import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
-import { InstallationGuide } from "@/app/components/docs/cosmetic/InstallationGuide";
+import { ComponentDocPage } from "@/app/components/docs/cosmetic/ComponentDocPage";
 
-# Accordion
-
-A customizable accordion component.
-
-<InstallationGuide component={"Accordion"} />
-
-<ComponentWrapper>
-  <Accordion>
-    <AccordionItem value="item-1">
-      <AccordionTitle>Accordion 1</AccordionTitle>
-      <AccordionContent>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-        officiis quo quidem quibusdam atque, incidunt esse. Fuga corporis omnis
-        repellendus vel saepe similique exercitationem porro accusantium, earum
-        voluptatibus delectus laudantium?
-      </AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-2">
-      <AccordionTitle>Accordion 2</AccordionTitle>
-      <AccordionContent>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-        officiis quo quidem quibusdam atque, incidunt esse. Fuga corporis omnis
-        repellendus vel saepe similique exercitationem porro accusantium, earum
-        voluptatibus delectus laudantium?
-      </AccordionContent>
-    </AccordionItem>
-  </Accordion>
-</ComponentWrapper>
----
+<ComponentDocPage name="Accordion" description="A customizable accordion component.">
+  <ComponentWrapper>
+    <Accordion>
+      <AccordionItem value="item-1">
+        <AccordionTitle>What is your return policy?</AccordionTitle>
+        <AccordionContent>We accept returns within 30 days of purchase if the item is unused, in its original packaging, and accompanied by a valid receipt. Refunds are issued to the original payment method within 5–7 business days after we receive the returned product.</AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTitle>How long does shipping take?</AccordionTitle>
+        <AccordionContent>Standard shipping typically takes 5–7 business days, while expedited options are available for an additional fee. Orders placed before 2 p.m. are usually processed the same business day and shipped out the following day.</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  </ComponentWrapper>
+</ComponentDocPage>

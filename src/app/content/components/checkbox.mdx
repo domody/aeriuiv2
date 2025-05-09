@@ -1,0 +1,23 @@
+import { Checkbox } from "@/app/components/ui/Checkbox";
+import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
+import { ComponentDocPage } from "@/app/components/docs/cosmetic/ComponentDocPage";
+
+<ComponentDocPage name="Badge" description="A customizable badge component.">
+  <ComponentWrapper>
+    <div className="flex items-center space-x-2">
+      <Checkbox id="subscribe" />
+      <label htmlFor="subscribe" className="cursor-pointer text-sm font-medium">
+        Subscribe to weekly product updates
+      </label>
+    </div>
+  </ComponentWrapper>
+  ---
+  <ComponentWrapper>
+    <div className="flex items-center space-x-2">
+      <Checkbox id="subscribe" disabled />
+      <label htmlFor="subscribe" className="cursor-pointer text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-75">
+        Subscribe to weekly product updates
+      </label>
+    </div>
+  </ComponentWrapper>
+</ComponentDocPage>

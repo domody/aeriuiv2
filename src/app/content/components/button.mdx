@@ -1,34 +1,28 @@
 import { Button } from "aeriui/Button";
-import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
-import { InstallationGuide } from "@/app/components/docs/cosmetic/InstallationGuide";
 import { Moon } from "lucide-react";
+import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
+import { ComponentDocPage } from "@/app/components/docs/cosmetic/ComponentDocPage";
 
-# Button
-
-A customizable button component.
-
-<InstallationGuide component={"Button"} />
-
-<ComponentWrapper>
-  <Button>Click Me</Button>
-</ComponentWrapper>
-
----
-
-<ComponentWrapper>
-  <Button variant="secondary">Click me</Button>
-</ComponentWrapper>
-<ComponentWrapper>
-  <Button variant="outline">Click me</Button>
-</ComponentWrapper>
-<ComponentWrapper>
-  <Button variant="ghost">Click me</Button>
-</ComponentWrapper>
-<ComponentWrapper>
-  <Button variant="destructive">Delete account</Button>
-</ComponentWrapper>
-<ComponentWrapper>
-  <Button variant="ghost" size="icon">
-    <Moon />
-  </Button>
-</ComponentWrapper>
+<ComponentDocPage name="Button" description="A customizable button component.">
+  <ComponentWrapper>
+    <Button>Click Me</Button>
+  </ComponentWrapper>
+  ---
+  <ComponentWrapper>
+    <Button variant="secondary">Click me</Button>
+  </ComponentWrapper>
+  <ComponentWrapper>
+    <Button variant="outline">Click me</Button>
+  </ComponentWrapper>
+  <ComponentWrapper>
+    <Button variant="ghost">Click me</Button>
+  </ComponentWrapper>
+  <ComponentWrapper>
+    <Button variant="destructive">Delete account</Button>
+  </ComponentWrapper>
+  <ComponentWrapper>
+    <Button variant="ghost" size="icon">
+      <Moon />
+    </Button>
+  </ComponentWrapper>
+</ComponentDocPage>

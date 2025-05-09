@@ -1,59 +1,42 @@
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownSection,
-  DropdownItem,
-} from "aeriui/Dropdown";
-import {
-  User,
-  CreditCard,
-  Settings,
-  Keyboard,
-  LogOut,
-  Trash2,
-} from "lucide-react";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem } from "aeriui/Dropdown";
+import { User, CreditCard, Settings, Keyboard, LogOut, Trash2 } from "lucide-react";
 import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
-import { InstallationGuide } from "@/app/components/docs/cosmetic/InstallationGuide";
+import { ComponentDocPage } from "@/app/components/docs/cosmetic/ComponentDocPage";
 
-# Dropdown
-
-A customizable dropdown component.
-
-<InstallationGuide component={"Dropdown"} />
-
-<ComponentWrapper>
-  <Dropdown>
-    <DropdownTrigger variant="outline">Open</DropdownTrigger>
-    <DropdownMenu title="My Account">
-      <DropdownSection seperator>
-        <DropdownItem>
-          <User />
-          Profile
-        </DropdownItem>
-        <DropdownItem disabled>
-          <CreditCard />
-          Billing
-        </DropdownItem>
-        <DropdownItem>
-          <Settings />
-          Settings
-        </DropdownItem>
-        <DropdownItem>
-          <Keyboard />
-          Keyboard Shortcuts
-        </DropdownItem>
-      </DropdownSection>
-      <DropdownSection>
-        <DropdownItem>
-          <LogOut />
-          Log out
-        </DropdownItem>
-        <DropdownItem variant={"destructive"}>
-          <Trash2 />
-          Delete Account
-        </DropdownItem>
-      </DropdownSection>
-    </DropdownMenu>
-  </Dropdown>
-</ComponentWrapper>
+<ComponentDocPage name="Dropdown" description="A customizable dropdown component.">
+  <ComponentWrapper>
+    <Dropdown>
+      <DropdownTrigger variant="outline">Open</DropdownTrigger>
+      <DropdownMenu title="My Account">
+        <DropdownSection seperator>
+          <DropdownItem>
+            <User />
+            Profile
+          </DropdownItem>
+          <DropdownItem disabled>
+            <CreditCard />
+            Billing
+          </DropdownItem>
+          <DropdownItem>
+            <Settings />
+            Settings
+          </DropdownItem>
+          <DropdownItem>
+            <Keyboard />
+            Keyboard Shortcuts
+          </DropdownItem>
+        </DropdownSection>
+        <DropdownSection>
+          <DropdownItem>
+            <LogOut />
+            Log out
+          </DropdownItem>
+          <DropdownItem variant={"destructive"}>
+            <Trash2 />
+            Delete Account
+          </DropdownItem>
+        </DropdownSection>
+      </DropdownMenu>
+    </Dropdown>
+  </ComponentWrapper>
+</ComponentDocPage>

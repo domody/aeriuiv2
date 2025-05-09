@@ -1,40 +1,26 @@
-import {
-  ContextMenu,
-  ContextMenuTrigger,
-  ContextMenuContent,
-  ContextMenuSection,
-  ContextMenuItem,
-} from "aeriui/ContextMenu";
+import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuSection, ContextMenuItem } from "aeriui/ContextMenu";
 import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
-import { InstallationGuide } from "@/app/components/docs/cosmetic/InstallationGuide";
+import { ComponentDocPage } from "@/app/components/docs/cosmetic/ComponentDocPage";
 
-# Context Menu
-
-A customizable context menu component.
-
-
-<InstallationGuide component={"ContextMenu"} />
-
-<ComponentWrapper>
-  <ContextMenu>
-    <ContextMenuTrigger className="border-border bg-background flex h-[300px] w-[600px] items-center justify-center rounded-md border border-dashed text-sm">
-      Right-Click Here
-    </ContextMenuTrigger>
-    <ContextMenuContent>
-      <ContextMenuSection seperator>
-        <ContextMenuItem>Back</ContextMenuItem>
-        <ContextMenuItem>Forward</ContextMenuItem>
-        <ContextMenuItem>Reload</ContextMenuItem>
-        <ContextMenuItem>More Tools</ContextMenuItem>
-      </ContextMenuSection>
-      <ContextMenuSection seperator>
-        <ContextMenuItem>Show Bookmarks Bar</ContextMenuItem>
-        <ContextMenuItem>Show Full URLs</ContextMenuItem>
-      </ContextMenuSection>
-      <ContextMenuSection>
-        <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
-      </ContextMenuSection>
-    </ContextMenuContent>
-  </ContextMenu>
-</ComponentWrapper>
----
+<ComponentDocPage name="Context Menu" description="A customizable context menu component.">
+  <ComponentWrapper>
+    <ContextMenu>
+      <ContextMenuTrigger className="border-border bg-background flex h-[300px] w-[600px] items-center justify-center rounded-md border border-dashed text-sm">Right-Click Here</ContextMenuTrigger>
+      <ContextMenuContent>
+        <ContextMenuSection seperator>
+          <ContextMenuItem>Back</ContextMenuItem>
+          <ContextMenuItem>Forward</ContextMenuItem>
+          <ContextMenuItem>Reload</ContextMenuItem>
+          <ContextMenuItem>More Tools</ContextMenuItem>
+        </ContextMenuSection>
+        <ContextMenuSection seperator>
+          <ContextMenuItem>Show Bookmarks Bar</ContextMenuItem>
+          <ContextMenuItem>Show Full URLs</ContextMenuItem>
+        </ContextMenuSection>
+        <ContextMenuSection>
+          <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+        </ContextMenuSection>
+      </ContextMenuContent>
+    </ContextMenu>
+  </ComponentWrapper>
+</ComponentDocPage>

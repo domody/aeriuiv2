@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import { CodeBlock } from "@/app/components/docs/cosmetic/CodeBlock";
+import { Separator } from "@/app/components/ui";
 
 interface CodeElementProps {
   className?: string;
@@ -17,7 +18,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </Link>
     ),
-    hr: () => <hr className="border-border my-8" />,
+    hr: () => <Separator className="my-8" />,
 
     // Handle fenced code blocks (triple backticks)
     pre: ({ children }) => {

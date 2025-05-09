@@ -3,43 +3,47 @@ import { Input } from "aeriui/Input";
 import { Button } from "aeriui/Button";
 import { Eye } from "lucide-react";
 import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
-import { InstallationGuide } from "@/app/components/docs/cosmetic/InstallationGuide";
+import { ComponentDocPage } from "@/app/components/docs/cosmetic/ComponentDocPage";
 
-# Seperator
-
-A customizable seperator component.
-
-<InstallationGuide component={"Seperator"} />
-
-<ComponentWrapper>
-  <div className="border-border bg-background flex w-full flex-col items-start justify-center space-y-4 rounded border px-8 py-4">
-    <div className="flex-col">
-      <p className="font-medium">Account Settings</p>
-      <p className="text-muted-foreground text-sm">Manage your personal details and update your preferences.</p>
+<ComponentDocPage name="Separator" description="A customizable separator component.">
+  <ComponentWrapper>
+    <div className="border-border bg-background flex w-full flex-col items-start justify-center space-y-4 rounded border px-8 py-4">
+      <div className="flex-col">
+        <p className="font-medium">Account Settings</p>
+        <p className="text-muted-foreground text-sm">Manage your personal details and update your preferences.</p>
+      </div>
+      <Separator />
+      <div className="flex w-full items-center justify-between space-x-4 h-7">
+        <div className="flex flex-1 justify-center">
+          <p>Profile</p>
+        </div>
+        <Separator vertical />
+        <div className="flex flex-1 justify-center">
+          <p>Security</p>
+        </div>
+        <Separator vertical />
+        <div className="flex flex-1 justify-center">
+          <p>Notifications</p>
+        </div>
+      </div>
     </div>
-    <Separator />
-    <div className="flex h-6 w-full items-center justify-evenly space-x-4">
-      <p>Profile</p>
-      <Separator vertical />
-      <p>Security</p>
-      <Separator vertical />
-      <p>Notifications</p>
-    </div>
-  </div>
-</ComponentWrapper>
+  </ComponentWrapper>
+
 ---
-<ComponentWrapper>
-  <div className="border-border bg-background flex w-full flex-col items-center justify-center space-y-4 rounded border px-8 py-4">
-    <Input
-      className="w-full"
-      label="Email"
-      placeholder="example@email.com"
-      type="email"
-    />
-    <Separator content="OR CONTINUE WITH" />
-    <Button variant={"outline"} className="h-10 w-full">
-      <Eye />
-      Retina verification
-    </Button>
-  </div>
-</ComponentWrapper>
+
+  <ComponentWrapper>
+    <div className="border-border bg-background flex w-full flex-col items-center justify-center space-y-4 rounded border px-8 py-4">
+      <Input
+        className="w-full"
+        label="Email"
+        placeholder="example@email.com"
+        type="email"
+      />
+      <Separator>OR CONTINUE WITH</Separator>
+      <Button variant={"outline"} className="h-10 w-full">
+        <Eye />
+        Retina verification
+      </Button>
+    </div>
+  </ComponentWrapper>
+</ComponentDocPage>

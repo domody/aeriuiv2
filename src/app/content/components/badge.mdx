@@ -1,23 +1,19 @@
 import { Badge } from "aeriui/Badge";
 import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
-import { InstallationGuide } from "@/app/components/docs/cosmetic/InstallationGuide";
+import { ComponentDocPage } from "@/app/components/docs/cosmetic/ComponentDocPage";
 
-# Badge
-
-A customizable badge component.
-
-<InstallationGuide component={"Badge"} />
-
-<ComponentWrapper>
-  <Badge>Development</Badge>
-</ComponentWrapper>
----
-<ComponentWrapper>
-  <Badge variant={"secondary"}>Development</Badge>
-</ComponentWrapper>
-<ComponentWrapper>
-  <Badge variant={"destructive"}>Destructive</Badge>
-</ComponentWrapper>
-<ComponentWrapper>
-  <Badge variant={"outline"}>Development</Badge>
-</ComponentWrapper>
+<ComponentDocPage name="Badge" description="A customizable badge component.">
+  <ComponentWrapper>
+    <Badge>Development</Badge>
+  </ComponentWrapper>
+  ---
+  <ComponentWrapper>
+    <Badge variant={"secondary"}>Development</Badge>
+  </ComponentWrapper>
+  <ComponentWrapper>
+    <Badge variant={"destructive"}>Destructive</Badge>
+  </ComponentWrapper>
+  <ComponentWrapper>
+    <Badge variant={"outline"}>Development</Badge>
+  </ComponentWrapper>
+</ComponentDocPage>

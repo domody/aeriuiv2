@@ -1,28 +1,18 @@
-import {
-  Selector,
-  SelectorTrigger,
-  SelectorContent,
-  SelectorContentItem,
-} from "aeriui/Selector";
+import { Selector, SelectorTrigger, SelectorContent, SelectorContentItem } from "aeriui/Selector";
 import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
-import { InstallationGuide } from "@/app/components/docs/cosmetic/InstallationGuide";
+import { ComponentDocPage } from "@/app/components/docs/cosmetic/ComponentDocPage";
 
-# Selector
-
-A customizable selector component.
-
-<InstallationGuide component={"Selector"} />
-
-<ComponentWrapper>
-  <Selector>
-    <SelectorTrigger placeholder="Select Fruit..." />
-    <SelectorContent checkEnd>
-      <SelectorContentItem value="Apple">Apple</SelectorContentItem>
-      <SelectorContentItem value="Orange">Orange</SelectorContentItem>
-      <SelectorContentItem value="Bananas">Bananas</SelectorContentItem>
-      <SelectorContentItem value="Pear">Pear</SelectorContentItem>
-      <SelectorContentItem value="Blueberry">Blueberry</SelectorContentItem>
-    </SelectorContent>
-  </Selector>
-</ComponentWrapper>
----
+<ComponentDocPage name="Selector" description="A customizable selector component.">
+  <ComponentWrapper>
+    <Selector>
+      <SelectorTrigger placeholder="Select Fruit..." />
+      <SelectorContent checkEnd>
+        <SelectorContentItem value="Apple">Apple</SelectorContentItem>
+        <SelectorContentItem value="Orange">Orange</SelectorContentItem>
+        <SelectorContentItem value="Bananas">Bananas</SelectorContentItem>
+        <SelectorContentItem value="Pear">Pear</SelectorContentItem>
+        <SelectorContentItem value="Blueberry">Blueberry</SelectorContentItem>
+      </SelectorContent>
+    </Selector>
+  </ComponentWrapper>
+</ComponentDocPage>
