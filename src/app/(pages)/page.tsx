@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import GithubLogoWhite from "@/app/assets/brand/github/github-mark-white.svg";
 import { Navbar } from "@/app/components/docs/navigation/Navbar";
-import { Sidebar } from "@/app/components/docs/navigation/Sidebar";
 
 import { Button } from "aeriui/Button";
 import {
