@@ -75,12 +75,14 @@ const OptionListItem = React.forwardRef<HTMLButtonElement, OptionListItemProps>(
         variant={variant}
         {...props}
       >
-        {children}
-        {shortcut && (
-          <span className="text-muted-foreground ml-auto font-mono text-xs">
-            {shortcut}
-          </span>
-        )}
+        <div className="flex w-full items-center justify-start gap-2">
+          {children}
+          {shortcut && (
+            <span className="text-muted-foreground ml-auto font-mono text-xs">
+              {shortcut}
+            </span>
+          )}
+        </div>
       </Button>
     );
   },

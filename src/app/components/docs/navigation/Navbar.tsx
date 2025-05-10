@@ -1,5 +1,5 @@
 "use client";
-
+import React, { SetStateAction } from "react";
 import Link from "next/link";
 
 const links = [
@@ -34,10 +34,16 @@ const applyToRoot = (className: string) => {
   localStorage.setItem("theme", className);
 };
 
-export function Navbar() {
+export function Navbar({
+  sidebarOpen,
+  setSidebarOpen,
+}: {
+  sidebarOpen: boolean;
+  setSidebarOpen: React.Dispatch<SetStateAction<boolean>>;
+}) {
   return (
     <div className="bg-background border-border fixed top-0 left-0 z-99 h-14 w-full border-b">
-      <div className="container mx-auto flex h-14 items-center justify-between px-8 sm:px-4">
+      <div className="container mx-auto flex h-14 items-center justify-between px-4">
         <div className="flex space-x-8">
           <h2>
             <Link href={`/`}>aeri</Link>
@@ -51,7 +57,14 @@ export function Navbar() {
           </Selector>
         </div>
         <div className="flex items-center justify-end space-x-4">
-          <Button variant={"ghost"} size={"icon"} className="sm:hidden">
+          <Button
+            variant={"ghost"}
+            size={"icon"}
+            className="sm:hidden"
+            onClick={() => {
+              setSidebarOpen(!sidebarOpen);
+            }}
+          >
             <Menu />
           </Button>
           {links.map((link, index) => {
