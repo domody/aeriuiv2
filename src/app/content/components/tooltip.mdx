@@ -6,17 +6,17 @@ import { TooltipOutlineDemo } from "@/app/demos/Tooltip/Outline";
 import { TooltipDestructiveDemo } from "@/app/demos/Tooltip/Destructive";
 
 <ComponentDocPage name="Tooltip" description="A customizable tooltip component.">
-  <ComponentWrapper>
+  <ComponentWrapper fileOverride={"Tooltip"}>
     <TooltipDemo />
   </ComponentWrapper>
   ---
-  <ComponentWrapper>
+  <ComponentWrapper fileOverride={"TooltipSecondaryDemo"}>
     <TooltipSecondaryDemo />
   </ComponentWrapper>
-  <ComponentWrapper>
+  <ComponentWrapper fileOverride={"TooltipOutlineDemo"}>
     <TooltipOutlineDemo />
   </ComponentWrapper>
-  <ComponentWrapper>
+  <ComponentWrapper fileOverride={"TooltipDestructiveDemo"}>
     <TooltipDestructiveDemo />
   </ComponentWrapper>
 </ComponentDocPage>

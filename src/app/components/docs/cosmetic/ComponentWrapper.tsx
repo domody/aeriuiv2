@@ -6,7 +6,7 @@ import { cn } from "@/app/lib/utils/cn";
 import jsxToString from "react-element-to-jsx-string"; // Import this package
 import { Tabs, TabList, Tab, TabContent } from "aeriui/Tabs";
 import { CodeBlock } from "./CodeBlock";
-import { Eye, Terminal } from "lucide-react";
+import { Eye, Loader, Terminal } from "lucide-react";
 import * as AeriUIComponents from "aeriui/index";
 
 interface ComponentWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -15,64 +15,82 @@ interface ComponentWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 const ComponentWrapper = React.forwardRef<
   HTMLDivElement,
   ComponentWrapperProps
->(({ className, children, fileOverride = "Input", ...props }, ref) => {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [demoCode, setDemoCode] = useState<string>("");
-  const demoPath = fileOverride.split(/(?=[A-Z])/);
-  console.log(demoPath);
-  useEffect(() => {
-    async function fetchDemoCode() {
-      setLoading(true);
-      try {
-        const response = await fetch(
-          `https://raw.githubusercontent.com/domody/aeriui-pkg/refs/heads/main/src/components/${formattedDoc}.tsx`,
-          { cache: "no-store" },
-        );
+>(
+  (
+    { className, children, fileOverride = "InputControlled", ...props },
+    ref,
+  ) => {
+    const [loading, setLoading] = useState<boolean>(true);
+    const [demoCode, setDemoCode] = useState<string>("");
 
-        if (!response.ok) throw new Error("Failed to fetch file");
-        const data = await response.text();
-        setDemoCode(data);
-      } catch (err) {
-        console.error("Error fetching file:", err);
-      } finally {
-        setLoading(false);
+    const fileOverrideSplit = fileOverride.split(/(?=[A-Z])/);
+    const demoPath =
+      fileOverrideSplit.length > 1
+        ? fileOverrideSplit
+        : [fileOverrideSplit[0], "Basic"];
+
+    demoPath[0] = demoPath[0]
+      .replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
+      .replace(/^./, (char) => char.toUpperCase());
+    console.log(demoPath);
+    useEffect(() => {
+      async function fetchDemoCode() {
+        setLoading(true);
+        try {
+          const response = await fetch(
+            `https://raw.githubusercontent.com/domody/aeriuiv2/refs/heads/master/src/app/demos/${demoPath[0]}/${demoPath[1]}.tsx`,
+            { cache: "no-store" },
+          );
+
+          if (!response.ok) throw new Error("Failed to fetch file");
+          const data = await response.text();
+          setDemoCode(data);
+        } catch (err) {
+          console.error("Error fetching file:", err);
+        } finally {
+          setLoading(false);
+        }
       }
-    }
-    // fetchDemoCode();
-  }, []);
+      fetchDemoCode();
+    }, []);
 
-  return (
-    <Tabs defaultValue="Preview" className="mb-8">
-      <TabList>
-        <Tab value="Preview">
-          <Eye /> Preview
-        </Tab>
-        <Tab value="Code">
-          <Terminal /> Code
-        </Tab>
-      </TabList>
-      <TabContent value="Preview">
-        <div
-          ref={ref}
-          className={cn(
-            "border-border bg-dots not-prose text-foreground flex items-center justify-center rounded border px-12 py-20",
-            className,
-          )}
-          {...props}
-        >
-          <div className="flex w-[500px] items-center justify-center">
-            {children}
+    return (
+      <Tabs defaultValue="Preview" className="mb-8">
+        <TabList>
+          <Tab value="Preview">
+            <Eye /> Preview
+          </Tab>
+          <Tab value="Code">
+            <Terminal /> Code
+          </Tab>
+        </TabList>
+        <TabContent value="Preview">
+          <div
+            ref={ref}
+            className={cn(
+              "border-border bg-dots not-prose text-foreground flex items-center justify-center rounded border px-12 py-20",
+              className,
+            )}
+            {...props}
+          >
+            <div className="flex w-[500px] items-center justify-center">
+              {children}
+            </div>
           </div>
-        </div>
-      </TabContent>
-      <TabContent value="Code">
-        <div className="relative">
-          <CodeBlock code={"He"} />
-        </div>
-      </TabContent>
-    </Tabs>
-  );
-});
+        </TabContent>
+        <TabContent value="Code">
+          {loading ? (
+            <Loader className="mx-auto animate-spin" />
+          ) : (
+            <div className="relative">
+              <CodeBlock code={demoCode} />
+            </div>
+          )}
+        </TabContent>
+      </Tabs>
+    );
+  },
+);
 ComponentWrapper.displayName = "ComponentWrapper";
 
 export { ComponentWrapper };

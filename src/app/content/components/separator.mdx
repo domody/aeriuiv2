@@ -8,13 +8,11 @@ import { SeparatorDemo } from "@/app/demos/Separator/Basic";
 import { SeparatorContentDemo } from "@/app/demos/Separator/Content";
 
 <ComponentDocPage name="Separator" description="A customizable separator component.">
-  <ComponentWrapper>
+  <ComponentWrapper fileOverride={"Separator"}>
     <SeparatorDemo />
   </ComponentWrapper>
-
----
-
-  <ComponentWrapper>
+  ---
+  <ComponentWrapper fileOverride={"SeparatorContentDemo"}>
     <SeparatorContentDemo />
   </ComponentWrapper>
 </ComponentDocPage>
