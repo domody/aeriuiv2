@@ -3,11 +3,9 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import { cn } from "@/app/lib/utils/cn";
-import jsxToString from "react-element-to-jsx-string"; // Import this package
 import { Tabs, TabList, Tab, TabContent } from "aeriui/Tabs";
 import { CodeBlock } from "./CodeBlock";
 import { Eye, Loader, Terminal } from "lucide-react";
-import * as AeriUIComponents from "aeriui/index";
 
 interface ComponentWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   fileOverride: string;
@@ -52,7 +50,7 @@ const ComponentWrapper = React.forwardRef<
         }
       }
       fetchDemoCode();
-    }, []);
+    });
 
     return (
       <Tabs defaultValue="Preview" className="mb-8">

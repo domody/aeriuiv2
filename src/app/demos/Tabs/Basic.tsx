@@ -14,9 +14,9 @@ export function TabsDemo() {
           <CardHeader>Paris, France</CardHeader>
           <CardContent>
             <p>
-              Known as the <strong>"City of Light"</strong>, Paris is famous for
+              Known as the <strong>&#34;City of Light&#34;</strong>, Paris is famous for
               its iconic landmarks like the Eiffel Tower, the Louvre, and the
-              charming streets of Montmartre. It's a city of art, history, and
+              charming streets of Montmartre. It&#39;s a city of art, history, and
               romance.
             </p>
             <p className="mt-2">

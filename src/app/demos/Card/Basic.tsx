@@ -8,7 +8,7 @@ export function CardDemo() {
       <CardContent>
         <p>
           You are about to make changes to your account settings. These changes
-          are irreversible, so please make sure you're certain before saving.
+          are irreversible, so please make sure you&#39;re certain before saving.
         </p>
         <p className="mt-2">
           Once confirmed, these modifications cannot be undone, and will affect
