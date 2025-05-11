@@ -113,7 +113,7 @@ export const tooltipContentVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "outline",
+      variant: "primary",
       position: "top-center",
     },
   },

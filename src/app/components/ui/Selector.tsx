@@ -234,7 +234,7 @@ const SelectorContentItem = React.forwardRef<
       {...props}
     >
       {children}
-      {checkEnd && active == value && <Check />}
+      {checkEnd && active == value && <Check className="ml-auto" />}
     </OptionListItem>
   );
 });

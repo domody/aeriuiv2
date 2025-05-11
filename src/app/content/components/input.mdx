@@ -1,13 +1,19 @@
 import { Input } from "aeriui/Input";
 import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
 import { ComponentDocPage } from "@/app/components/docs/cosmetic/ComponentDocPage";
+import { InputDemo } from "@/app/demos/Input/Basic";
+import { InputFloatingDemo } from "@/app/demos/Input/Floating";
+import { InputControlledDemo } from "@/app/demos/Input/Controlled";
 
 <ComponentDocPage name="Input" description="A customizable input component.">
   <ComponentWrapper>
-    <Input className="w-[500px]" type="email" label="Email" placeholder="example@email.com" />
+    <InputDemo />
   </ComponentWrapper>
   ---
   <ComponentWrapper>
-    <Input className="w-[500px]" type="password" label="Password" labelType="floating" />
+    <InputFloatingDemo />
+  </ComponentWrapper>
+    <ComponentWrapper>
+    <InputControlledDemo />
   </ComponentWrapper>
 </ComponentDocPage>

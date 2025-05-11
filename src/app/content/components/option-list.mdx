@@ -2,28 +2,10 @@ import { OptionList, OptionListSection, OptionListItem } from "aeriui/OptionList
 import { FolderOpen, Edit, Share, Trash2 } from "lucide-react";
 import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
 import { ComponentDocPage } from "@/app/components/docs/cosmetic/ComponentDocPage";
+import { OptionListDemo } from "@/app/demos/OptionList/Basic";
 
 <ComponentDocPage name="Option List" description="A customizable option list component.">
   <ComponentWrapper>
-    <OptionList title="File Options">
-      <OptionListSection>
-        <OptionListItem shortcut="⇧⌘O">
-          <FolderOpen />
-          Open File
-        </OptionListItem>
-        <OptionListItem disabled>
-          <Edit />
-          Edit File
-        </OptionListItem>
-        <OptionListItem>
-          <Share />
-          Share File
-        </OptionListItem>
-        <OptionListItem variant={"destructive"}>
-          <Trash2 />
-          Delete File
-        </OptionListItem>
-      </OptionListSection>
-    </OptionList>
+    <OptionListDemo />
   </ComponentWrapper>
 </ComponentDocPage>

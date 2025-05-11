@@ -1,45 +1,22 @@
-import { Tooltip, TooltipTrigger, TooltipContent } from "aeriui/Tooltip";
-import { Button } from "aeriui/Button";
 import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
 import { ComponentDocPage } from "@/app/components/docs/cosmetic/ComponentDocPage";
-import { Plus, Trash2 } from "lucide-react";
+import { TooltipDemo } from "@/app/demos/Tooltip/Basic";
+import { TooltipSecondaryDemo } from "@/app/demos/Tooltip/Secondary";
+import { TooltipOutlineDemo } from "@/app/demos/Tooltip/Outline";
+import { TooltipDestructiveDemo } from "@/app/demos/Tooltip/Destructive";
 
 <ComponentDocPage name="Tooltip" description="A customizable tooltip component.">
-<ComponentWrapper>
-  <Tooltip>
-    <TooltipTrigger>
-      <Button variant={"outline"}>Hover</Button>
-    </TooltipTrigger>
-    <TooltipContent>
-      <p>This is a tooltip</p>
-    </TooltipContent>
-  </Tooltip>
-</ComponentWrapper>
----
-<ComponentWrapper>
-  <Tooltip>
-    <TooltipTrigger>
-      <Button variant={"outline"} size={"icon"}>
-        <Plus />
-      </Button>
-    </TooltipTrigger>
-    <TooltipContent position={"bottom-center"} variant={"secondary"}>
-      <p>Add to library</p>
-    </TooltipContent>
-  </Tooltip>
-</ComponentWrapper>
-<ComponentWrapper>
-  <Tooltip>
-    <TooltipTrigger>
-      <Button variant={"destructive"} size={"icon"}>
-        <Trash2 />
-      </Button>
-    </TooltipTrigger>
-    <TooltipContent position={"right-center"} variant={"destructive"}>
-      <p>Delete Account</p>
-    </TooltipContent>
-  </Tooltip>
-</ComponentWrapper>
-
+  <ComponentWrapper>
+    <TooltipDemo />
+  </ComponentWrapper>
+  ---
+  <ComponentWrapper>
+    <TooltipSecondaryDemo />
+  </ComponentWrapper>
+  <ComponentWrapper>
+    <TooltipOutlineDemo />
+  </ComponentWrapper>
+  <ComponentWrapper>
+    <TooltipDestructiveDemo />
+  </ComponentWrapper>
 </ComponentDocPage>
-

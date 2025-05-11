@@ -2,27 +2,31 @@ import { Button } from "aeriui/Button";
 import { Moon } from "lucide-react";
 import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
 import { ComponentDocPage } from "@/app/components/docs/cosmetic/ComponentDocPage";
+import { ButtonDemo } from "@/app/demos/Button/Basic";
+import { ButtonSecondaryDemo } from "@/app/demos/Button/Secondary";
+import { ButtonOutlineDemo } from "@/app/demos/Button/Outline";
+import { ButtonGhostDemo } from "@/app/demos/Button/Ghost";
+import { ButtonDestructiveDemo } from "@/app/demos/Button/Destructive";
+import { ButtonIconDemo } from "@/app/demos/Button/Icon";
 
 <ComponentDocPage name="Button" description="A customizable button component.">
   <ComponentWrapper>
-    <Button>Click Me</Button>
+    <ButtonDemo />
   </ComponentWrapper>
   ---
   <ComponentWrapper>
-    <Button variant="secondary">Click me</Button>
+    <ButtonSecondaryDemo />
   </ComponentWrapper>
   <ComponentWrapper>
-    <Button variant="outline">Click me</Button>
+    <ButtonOutlineDemo />
   </ComponentWrapper>
   <ComponentWrapper>
-    <Button variant="ghost">Click me</Button>
+    <ButtonGhostDemo />
   </ComponentWrapper>
   <ComponentWrapper>
-    <Button variant="destructive">Delete account</Button>
+    <ButtonDestructiveDemo />
   </ComponentWrapper>
   <ComponentWrapper>
-    <Button variant="ghost" size="icon">
-      <Moon />
-    </Button>
+    <ButtonIconDemo />
   </ComponentWrapper>
 </ComponentDocPage>

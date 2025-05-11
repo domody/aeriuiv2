@@ -2,6 +2,10 @@ import { Alert, AlertTitle, AlertDescription } from "aeriui/Alert";
 import { Bell, CheckCircle2, CircleAlert, Trash2 } from "lucide-react";
 import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
 import { ComponentDocPage } from "@/app/components/docs/cosmetic/ComponentDocPage";
+import { AlertDemo } from "@/app/demos/Alert/Basic";
+import { AlertSuccessDemo } from "@/app/demos/Alert/Success";
+import { AlertWarningDemo } from "@/app/demos/Alert/Warning";
+import { AlertDestructiveDemo } from "@/app/demos/Alert/Destructive";
 
 <ComponentDocPage
   name="Alert"
@@ -9,42 +13,16 @@ import { ComponentDocPage } from "@/app/components/docs/cosmetic/ComponentDocPag
 >
 
 <ComponentWrapper>
-  <Alert>
-    <Bell className="size-4" />
-    <AlertTitle>New Update Available</AlertTitle>
-    <AlertDescription>
-      A new version of the app is available. Please refresh the page to get the
-      latest features and improvements.
-    </AlertDescription>
-  </Alert>
+  <AlertDemo />
 </ComponentWrapper>
 ---
 <ComponentWrapper>
-  <Alert variant={"success"}>
-    <CheckCircle2 className="size-4" />
-    <AlertTitle>Success!</AlertTitle>
-    <AlertDescription>
-      Your settings have been successfully saved. You can now leave this page
-      safely.
-    </AlertDescription>
-  </Alert>
+  <AlertSuccessDemo />
 </ComponentWrapper>
 <ComponentWrapper>
-  <Alert variant={"warning"}>
-    <CircleAlert className="size-4" />
-    <AlertTitle>Are you sure?</AlertTitle>
-    <AlertDescription>
-      This action is not reversible. Are you sure you want to proceed?
-    </AlertDescription>
-  </Alert>
+  <AlertWarningDemo />
 </ComponentWrapper>
 <ComponentWrapper>
-  <Alert variant={"destructive"}>
-    <Trash2 className="size-4" />
-    <AlertTitle>Account Deleted.</AlertTitle>
-    <AlertDescription>
-      Your account has been deleted. This action is not reversible.
-    </AlertDescription>
-  </Alert>
+  <AlertDestructiveDemo />
 </ComponentWrapper>
 </ComponentDocPage>
