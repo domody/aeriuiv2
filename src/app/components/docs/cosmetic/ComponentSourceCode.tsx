@@ -7,7 +7,8 @@ async function getSourceCode(doc: string): Promise<string> {
       .join("");
 
     const response = await fetch(
-      `https://raw.githubusercontent.com/domody/aeriui-pkg/refs/heads/main/src/components/${formattedDoc}.tsx`,
+      // `https://raw.githubusercontent.com/domody/aeriui-pkg/refs/heads/main/src/components/${formattedDoc}.tsx`,
+      `https://raw.githubusercontent.com/domody/aeriuiv2/refs/heads/master/src/app/components/ui/${formattedDoc}.tsx`,
       { cache: "no-store" },
     );
 
