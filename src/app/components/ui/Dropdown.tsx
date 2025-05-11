@@ -116,7 +116,7 @@ const DropdownTrigger = React.forwardRef<HTMLButtonElement, ButtonProps>(
 DropdownTrigger.displayName = "DropdownTrigger";
 
 const dropdownMenuVariants = cva(
-  `bg-background border-border absolute top-[calc(100%+0.5rem)] w-max max-w-96 min-w-36 rounded-lg border transition-all shadow`,
+  `bg-background border-border absolute top-[calc(100%+0.5rem)] w-max max-w-64 min-w-36 rounded-lg border transition-all shadow`,
   {
     variants: {
       position: {

@@ -7,9 +7,9 @@ export function InputControlledDemo() {
   const [value, setValue] = useState<string>("");
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 w-full">
       <Input
-        className="w-[500px]"
+        className="w-full md:w-[500px]"
         label="Username"
         placeholder="John Doe"
         type="text"

@@ -35,7 +35,7 @@ export function CodeBlock({
       style={{ scrollbarWidth: "none" }}
     >
       <Button
-        className="dark absolute top-4.5 right-4.5"
+        className="absolute top-4.5 right-4.5 bg-[oklch(23.76%_0.0114_285.5deg)]/80"
         size={"icon"}
         variant={"ghost"}
         onClick={() => handleCopy()}
