@@ -1,11 +1,19 @@
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem } from "aeriui/Dropdown";
 import { User, CreditCard, Settings, Keyboard, LogOut, Trash2 } from "lucide-react";
 import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
 import { ComponentDocPage } from "@/app/components/docs/cosmetic/ComponentDocPage";
 import { DropdownDemo } from "@/app/demos/Dropdown/Basic";
+import { DropdownHoverDemo } from "@/app/demos/Dropdown/Hover";
+import { DropdownSubmenuDemo } from "@/app/demos/Dropdown/Submenu";
 
 <ComponentDocPage name="Dropdown" description="A customizable dropdown component.">
   <ComponentWrapper fileOverride={"Dropdown"}>
     <DropdownDemo />
+  </ComponentWrapper>
+  ---
+  <ComponentWrapper fileOverride={"DropdownSubmenuDemo"}>
+    <DropdownSubmenuDemo />
+  </ComponentWrapper>
+  <ComponentWrapper fileOverride={"DropdownHoverDemo"}>
+    <DropdownHoverDemo />
   </ComponentWrapper>
 </ComponentDocPage>

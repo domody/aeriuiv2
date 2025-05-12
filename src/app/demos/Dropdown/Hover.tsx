@@ -15,13 +15,13 @@ import {
   Trash2,
 } from "lucide-react";
 
-export function DropdownDemo() {
+export function DropdownHoverDemo() {
   return (
-    <Dropdown>
+    <Dropdown onHover>
       <DropdownTrigger>
         <Button variant="outline">Open</Button>
       </DropdownTrigger>
-      <DropdownMenu title="My Account">
+      <DropdownMenu position={"side"} title="My Account ">
         <DropdownSection seperator>
           <DropdownItem>
             <User />

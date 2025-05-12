@@ -7,8 +7,8 @@ import React, {
   useEffect,
   createContext,
   useContext,
+  useImperativeHandle,
 } from "react";
-import { Button, ButtonProps } from "aeriui/Button";
 import { cn } from "@/app/lib/utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
 
@@ -19,14 +19,16 @@ import {
   OptionListSectionProps,
   OptionListItem,
   OptionListItemProps,
-} from "aeriui/OptionList";
+} from "./OptionList";
 
 interface DropdownContextProps {
   open: boolean;
   setOpen: React.Dispatch<SetStateAction<boolean>>;
   onHover: boolean;
-  triggerRef: React.RefObject<HTMLButtonElement | null>;
+  triggerRef: React.RefObject<HTMLDivElement | null>;
   menuRef: React.RefObject<HTMLDivElement | null>;
+  clearCloseTimeout: () => void;
+  startCloseTimeout: () => void;
 }
 
 const DropdownContext = createContext<DropdownContextProps | null>(null);
@@ -39,8 +41,22 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
   ({ className, children, onHover = false, ...props }, ref) => {
     const [open, setOpen] = useState<boolean>(false);
 
-    const triggerRef = useRef<HTMLButtonElement | null>(null);
+    const triggerRef = useRef<HTMLDivElement | null>(null);
     const menuRef = useRef<HTMLDivElement | null>(null);
+    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    const startCloseTimeout = () => {
+      timeoutRef.current = setTimeout(() => {
+        setOpen(false);
+      }, 50);
+    };
+
+    const clearCloseTimeout = () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+    };
 
     useEffect(() => {
       function handleClickOutside(e: MouseEvent) {
@@ -76,6 +92,8 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
           onHover,
           triggerRef,
           menuRef,
+          clearCloseTimeout,
+          startCloseTimeout,
         }}
       >
         <div ref={ref} className={cn("relative", className)} {...props}>
@@ -83,58 +101,69 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
         </div>{" "}
       </DropdownContext.Provider>
     );
-  },
+  }
 );
 Dropdown.displayName = "Dropdown";
 
-const DropdownTrigger = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, children, ...props }, ref) => {
-    const context = useContext(DropdownContext);
-    if (!context)
-      throw new Error("DropdownTwigger must be used in a Dropdown!");
+const DropdownTrigger = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, children, ...props }, ref) => {
+  const context = useContext(DropdownContext);
+  if (!context) throw new Error("DropdownTwigger must be used in a Dropdown!");
 
-    const { open, setOpen, triggerRef } = context;
-    return (
-      <Button
-        ref={(el) => {
-          triggerRef.current = el;
-          if (typeof ref === "function") ref(el);
-          else if (ref) ref.current = el;
-        }}
-        onClick={(e) => {
+  const { setOpen, onHover, triggerRef, clearCloseTimeout, startCloseTimeout } =
+    context;
+
+  useImperativeHandle(ref, () => triggerRef.current as HTMLDivElement);
+
+  return (
+    <div
+      ref={triggerRef as React.RefObject<HTMLDivElement>}
+      onClick={(e) => {
+        if (!onHover) {
           e.stopPropagation();
-          setOpen(!open);
-        }}
-        className={cn("", className)}
-        {...props}
-      >
-        {children}
-      </Button>
-    );
-  },
-);
+          setOpen((prev) => !prev);
+        }
+      }}
+      onMouseEnter={() => {
+        if (onHover) {
+          clearCloseTimeout();
+          setOpen(true);
+        }
+      }}
+      onMouseLeave={() => {
+        if (onHover) startCloseTimeout();
+      }}
+      className={cn("", className)}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+});
 DropdownTrigger.displayName = "DropdownTrigger";
 
 const dropdownMenuVariants = cva(
-  `bg-background border-border absolute top-[calc(100%+0.5rem)] w-max max-w-64 min-w-36 rounded-lg border transition-all shadow`,
+  `bg-background border-border absolute w-max max-w-64 min-w-36 rounded-lg border transition-all shadow z-50`,
   {
     variants: {
       position: {
-        left: "left-0 origin-top-left",
-        center: "left-1/2 -translate-x-1/2 origin-top",
-        right: "right-0 origin-top-right",
+        left: "left-0 top-[calc(100%+0.5rem)] origin-top-left",
+        center: "left-1/2 top-[calc(100%+0.5rem)] -translate-x-1/2 origin-top",
+        right: "right-0 top-[calc(100%+0.5rem)] origin-top-right",
+        side: "left-[calc(100%+0.5rem)] top-0 origin-top-left",
       },
     },
     defaultVariants: {
       position: "left",
     },
-  },
+  }
 );
 
 interface DropdownMenuProps
   extends OptionListProps,
     VariantProps<typeof dropdownMenuVariants> {
-  position?: "left" | "center" | "right";
   title?: string;
   titleSeperator?: boolean;
 }
@@ -144,28 +173,42 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
     const context = useContext(DropdownContext);
     if (!context) throw new Error("DropdownMenu must be used in a Dropdown!");
 
-    const { open, menuRef } = context;
+    const {
+      open,
+      setOpen,
+      onHover,
+      menuRef,
+      clearCloseTimeout,
+      startCloseTimeout,
+    } = context;
+
+    useImperativeHandle(ref, () => menuRef.current as HTMLDivElement);
 
     return (
       <OptionList
-        ref={(el) => {
-          menuRef.current = el;
-          if (typeof ref === "function") ref(el);
-          else if (ref) ref.current = el;
-        }}
+        ref={menuRef as React.RefObject<HTMLDivElement>}
         className={cn(
           dropdownMenuVariants({ position }),
           open
             ? "scale-100 opacity-100"
-            : "pointer-events-none scale-90 opacity-0",
-          className,
+            : "scale-90 opacity-0 pointer-events-none",
+          className
         )}
+        onMouseEnter={() => {
+          if (onHover) {
+            clearCloseTimeout();
+            setOpen(true);
+          }
+        }}
+        onMouseLeave={() => {
+          if (onHover) startCloseTimeout();
+        }}
         {...props}
       >
         {children}
       </OptionList>
     );
-  },
+  }
 );
 DropdownMenu.displayName = "DropdownMenu";
 
@@ -204,7 +247,7 @@ const DropdownItem = React.forwardRef<HTMLButtonElement, OptionListItemProps>(
         {children}
       </OptionListItem>
     );
-  },
+  }
 );
 DropdownItem.displayName = "DropdownItem";
 
