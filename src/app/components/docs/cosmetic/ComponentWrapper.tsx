@@ -30,10 +30,9 @@ const ComponentWrapper = React.forwardRef<
     demoPath[0] = demoPath[0]
       .replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
       .replace(/^./, (char) => char.toUpperCase());
-    console.log(demoPath);
+
     useEffect(() => {
       async function fetchDemoCode() {
-        setLoading(true);
         try {
           const response = await fetch(
             `https://raw.githubusercontent.com/domody/aeriuiv2/refs/heads/master/src/app/demos/${demoPath[0]}/${demoPath[1]}.tsx`,
@@ -78,7 +77,9 @@ const ComponentWrapper = React.forwardRef<
         </TabContent>
         <TabContent value="Code">
           {loading ? (
-            <Loader className="mx-auto animate-spin" />
+            <div className="border-border w-full rounded border bg-[oklch(23.76%_0.0114_285.5deg)] py-5">
+              <Loader className="mx-auto size-4 animate-spin" />
+            </div>
           ) : (
             <div className="relative">
               <CodeBlock code={demoCode} />
