@@ -49,7 +49,7 @@ export function Navbar({
             <Link href={`/`}>aeri</Link>
           </h2>
           <Selector defaultValue="React" className="hidden">
-            <SelectorTrigger placeholder="Framework" />
+            <SelectorTrigger placeholder="Framework" className="h-8" />
             <SelectorContent checkEnd>
               <SelectorContentItem value="React">React</SelectorContentItem>
               <SelectorContentItem value="Svelte">Svelte</SelectorContentItem>

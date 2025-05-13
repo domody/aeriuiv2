@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Separator } from "aeriui/Separator";
 import { InstallationGuide } from "@/app/components/docs/cosmetic/InstallationGuide";
+import { ComponentProps } from "@/app/components/docs/cosmetic/ComponentProps";
 
 interface ComponentDocPageProps {
   name: string;
@@ -23,7 +24,9 @@ export const ComponentDocPage: React.FC<ComponentDocPageProps> = ({
 
       {children}
 
-      <Separator className="not-prose">
+      <ComponentProps component={name} />
+
+      <Separator className="not-prose mt-8">
         <Link
           href="https://github.com/domody/aeriuiv2"
           className="underline"

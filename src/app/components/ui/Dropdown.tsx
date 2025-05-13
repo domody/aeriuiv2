@@ -101,7 +101,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
         </div>{" "}
       </DropdownContext.Provider>
     );
-  }
+  },
 );
 Dropdown.displayName = "Dropdown";
 
@@ -156,20 +156,17 @@ const dropdownMenuVariants = cva(
       },
     },
     defaultVariants: {
-      position: "left",
+      position: "center",
     },
-  }
+  },
 );
 
 interface DropdownMenuProps
   extends OptionListProps,
-    VariantProps<typeof dropdownMenuVariants> {
-  title?: string;
-  titleSeperator?: boolean;
-}
+    VariantProps<typeof dropdownMenuVariants> {}
 
 const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
-  ({ className, children, position = "center", ...props }, ref) => {
+  ({ className, children, position, ...props }, ref) => {
     const context = useContext(DropdownContext);
     if (!context) throw new Error("DropdownMenu must be used in a Dropdown!");
 
@@ -191,8 +188,8 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
           dropdownMenuVariants({ position }),
           open
             ? "scale-100 opacity-100"
-            : "scale-90 opacity-0 pointer-events-none",
-          className
+            : "pointer-events-none scale-90 opacity-0",
+          className,
         )}
         onMouseEnter={() => {
           if (onHover) {
@@ -208,7 +205,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
         {children}
       </OptionList>
     );
-  }
+  },
 );
 DropdownMenu.displayName = "DropdownMenu";
 
@@ -247,7 +244,7 @@ const DropdownItem = React.forwardRef<HTMLButtonElement, OptionListItemProps>(
         {children}
       </OptionListItem>
     );
-  }
+  },
 );
 DropdownItem.displayName = "DropdownItem";
 

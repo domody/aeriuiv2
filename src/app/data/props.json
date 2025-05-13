@@ -1,0 +1,263 @@
+{
+  "Accordion": {
+    "Accordion": {
+      "props": [
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "default": "null",
+          "required": false,
+          "description": "The value of the item that should be open by default."
+        }
+      ]
+    },
+    "AccordionItem": {
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "default": "-",
+          "required": true,
+          "description": "The unique value that identifies the accordion item."
+        }
+      ]
+    },
+    "AccordionTitle": {
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "default": "-",
+          "required": false,
+          "description": "Injected internally by AccordionItem. Do not set manually.",
+          "internal": true
+        }
+      ]
+    },
+    "AccordionContent": {
+      "props": []
+    }
+  },
+  "Alert": {
+    "Alert": {
+      "props": [
+        {
+          "name": "variant",
+          "type": "default | success | warning | destructive",
+          "default": "default",
+          "required": false,
+          "description": "Controls the visual style of the alert."
+        }
+      ]
+    },
+    "AlertTitle": {
+      "props": []
+    },
+    "AlertDescription": {
+      "props": []
+    }
+  },
+  "Badge": {
+    "Badge": {
+      "props": [
+        {
+          "name": "variant",
+          "type": "default | secondary | destructive | outline",
+          "default": "default",
+          "required": false,
+          "description": "Changes the visual style of the badge."
+        }
+      ]
+    }
+  },
+  "Button": {
+    "Button": {
+      "props": [
+        {
+          "name": "variant",
+          "type": "primary | secondary | outline | destructive | ghost | link",
+          "default": "primary",
+          "required": false,
+          "description": "The variant of the button."
+        },
+        {
+          "name": "size",
+          "type": "default | sm | lg | icon",
+          "default": "default",
+          "required": false,
+          "description": "The size of the button."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "default": "false",
+          "required": false,
+          "description": "The button will pass its props to its child component instead of rendering a native button element. Useful when using custom components as the button root."
+        }
+      ]
+    }
+  },
+  "Card": {
+    "Card": {},
+    "CardHeader": {},
+    "CardContent": {},
+    "CardFooter": {}
+  },
+  "Checkbox": {
+    "Checkbox": {
+      "props": [
+        {
+          "name": "defaultChecked",
+          "type": "boolean",
+          "default": "false",
+          "required": false,
+          "description": "Initial checked state for uncontrolled usage."
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "default": "-",
+          "required": false,
+          "description": "Controls the checked state of the checkbox. If provided, the component is controlled."
+        },
+        {
+          "name": "onCheckedChange",
+          "type": "(checked: boolean) => void",
+          "default": "-",
+          "required": false,
+          "description": "Callback invoked when the checked state changes."
+        }
+      ]
+    }
+  },
+  "ContextMenu": {
+    "ContextMenu": {
+      "props": []
+    },
+    "ContextMenuTrigger": {
+      "props": []
+    },
+    "ContextMenuContent": {
+      "extends": "OptionList.OptionList"
+    },
+    "ContextMenuSection": {
+      "extends": "OptionList.OptionListSection"
+    },
+    "ContextMenuItem": {
+      "extends": "OptionList.OptionListItem"
+    }
+  },
+  "Dropdown": {
+    "Dropdown": {
+      "props": [
+        {
+          "name": "onHover",
+          "type": "boolean",
+          "default": "false",
+          "required": false,
+          "description": "Whether the dropdown opens on hover."
+        }
+      ]
+    },
+    "DropdownMenu": {
+      "extends": "OptionList.OptionList",
+      "props": [
+        {
+          "name": "position",
+          "type": "left | center | right | side",
+          "default": "center",
+          "required": false,
+          "description": "Dropdown position."
+        }
+      ]
+    },
+    "DropdownSection": {
+      "extends": "OptionList.OptionListSection"
+    },
+    "DropdownItem": {
+      "extends": "OptionList.OptionListItem"
+    }
+  },
+  "Input": {
+    "Input": {
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "default": "-",
+          "required": true,
+          "description": "Adds a label to the input."
+        },
+        {
+          "name": "labelType",
+          "type": "stationary | floating",
+          "default": "stationary",
+          "required": false,
+          "description": "Determines the positioning and styling of the label."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "-",
+          "required": false,
+          "description": "Controls the value of the input. If passed, the input becomes controlled."
+        },
+        {
+          "name": "onChange",
+          "type": "(e: React.ChangeEvent<HTMLInputElement>) => void",
+          "default": "-",
+          "required": true,
+          "description": "Callback invoked when the input value changes."
+        }
+      ]
+    }
+  },
+  "Modal": {},
+  "OptionList": {
+    "OptionList": {
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "default": "-",
+          "required": false,
+          "description": "Adds a title."
+        },
+        {
+          "name": "titleSeparator",
+          "type": "boolean",
+          "default": "true",
+          "required": false,
+          "description": "Adds a separator under the title."
+        }
+      ]
+    },
+    "OptionListSection": {
+      "props": [
+        {
+          "name": "separator",
+          "type": "boolean",
+          "default": "false",
+          "required": false,
+          "description": "Adds a separator under the section."
+        }
+      ]
+    },
+    "OptionListItem": {
+      "extends": "Button.Button",
+      "props": [
+        {
+          "name": "shortcut",
+          "type": "string",
+          "default": "-",
+          "required": false,
+          "description": "Displays a kbd shortcut on the right side of the option list item."
+        }
+      ]
+    }
+  },
+  "Selector": {},
+  "Separator": {},
+  "Tabs": {},
+  "Tooltip": {}
+}
