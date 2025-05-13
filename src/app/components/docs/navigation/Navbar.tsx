@@ -75,8 +75,10 @@ export function Navbar({
             );
           })}
           <Dropdown>
-            <DropdownTrigger variant="ghost" size="icon">
-              <Sun className="h-5 w-5" />
+            <DropdownTrigger>
+              <Button variant="ghost" size="icon">
+                <Sun className="h-5 w-5" />
+              </Button>
             </DropdownTrigger>
             <DropdownMenu className="max-w-36 min-w-36" position="right">
               <DropdownSection>
