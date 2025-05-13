@@ -5,7 +5,7 @@
         {
           "name": "defaultValue",
           "type": "string",
-          "default": "null",
+          "default": "-",
           "required": false,
           "description": "The value of the item that should be open by default."
         }
@@ -75,8 +75,8 @@
       "props": [
         {
           "name": "variant",
-          "type": "primary | secondary | outline | destructive | ghost | link",
-          "default": "primary",
+          "type": "default | secondary | outline | destructive | ghost | link",
+          "default": "default",
           "required": false,
           "description": "The variant of the button."
         },
@@ -98,10 +98,18 @@
     }
   },
   "Card": {
-    "Card": {},
-    "CardHeader": {},
-    "CardContent": {},
-    "CardFooter": {}
+    "Card": {
+      "props": []
+    },
+    "CardHeader": {
+      "props": []
+    },
+    "CardContent": {
+      "props": []
+    },
+    "CardFooter": {
+      "props": []
+    }
   },
   "Checkbox": {
     "Checkbox": {
@@ -212,7 +220,29 @@
       ]
     }
   },
-  "Modal": {},
+  "Modal": {
+    "Modal": {
+      "props": []
+    },
+    "ModalTrigger": {
+      "props": []
+    },
+    "ModalContent": {
+      "props": []
+    },
+    "ModalHeader": {
+      "props": []
+    },
+    "ModalBody": {
+      "props": []
+    },
+    "ModalFooter": {
+      "props": []
+    },
+    "ModalAction": {
+      "props": []
+    }
+  },
   "OptionList": {
     "OptionList": {
       "props": [
@@ -256,8 +286,167 @@
       ]
     }
   },
-  "Selector": {},
-  "Separator": {},
-  "Tabs": {},
-  "Tooltip": {}
+  "Selector": {
+    "Selector": {
+      "props": [
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "default": "-",
+          "required": false,
+          "description": "The value of the item that should be selected by default."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "-",
+          "required": false,
+          "description": "Controls the value of the selector. If passed, the selector becomes controlled."
+        },
+        {
+          "name": "onValueChange",
+          "type": "(e: string) => void",
+          "default": "-",
+          "required": false,
+          "description": "Callback invoked when the selected value changes."
+        }
+      ]
+    },
+    "SelectorTrigger": {
+      "extends": "Button.Button",
+      "props": [
+        {
+          "name": "placeholder",
+          "type": "string",
+          "default": "-",
+          "required": true,
+          "description": "Adds a placeholder to the selector when no item is selected."
+        }
+      ]
+    },
+    "SelectorContent": {
+      "extends": "OptionList.OptionList",
+      "props": [
+        {
+          "name": "position",
+          "type": "left | center | right",
+          "default": "center",
+          "required": false,
+          "description": "Selector position."
+        },
+        {
+          "name": "checkEnd",
+          "type": "boolean",
+          "default": "true",
+          "required": false,
+          "description": "Adds a check mark on the right side of the currently selected item."
+        }
+      ]
+    },
+    "SelectorContentItem": {
+      "extends": "OptionList.OptionListItem",
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "default": "-",
+          "required": true,
+          "description": "The unique value that identifies the Selector Item."
+        }
+      ]
+    }
+  },
+  "Separator": {
+    "Separator": {
+      "props": [
+        {
+          "name": "vertical",
+          "type": "boolean",
+          "default": "false",
+          "required": false,
+          "description": "Determines whether the separator is horizontal or vertical."
+        }
+      ]
+    }
+  },
+  "Tabs": {
+    "Tabs": {
+      "props": [
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "default": "-",
+          "required": true,
+          "description": "The value of the tab that should be open by default."
+        }
+      ]
+    },
+    "TabList": {
+      "props": [
+        {
+          "name": "position",
+          "type": "left | center | right",
+          "default": "left",
+          "required": false,
+          "description": "The positioning of the TabList."
+        }
+      ]
+    },
+    "Tab": {
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "default": "-",
+          "required": true,
+          "description": "The unique value that identifies the Tab and matches it to a TabContent."
+        }
+      ]
+    },
+    "TabContent": {
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "default": "-",
+          "required": true,
+          "description": "The unique value that identifies the TabContent and matches it to a Tab."
+        }
+      ]
+    }
+  },
+  "Tooltip": {
+    "Tooltip": {
+      "props": [
+        {
+          "name": "duration",
+          "type": "number",
+          "default": "300",
+          "required": false,
+          "description": "The amount of time the user must hover over the TooltipTrigger to show the TooltipContent, in ms."
+        }
+      ]
+    },
+    "TooltipContent": {
+      "props": []
+    },
+    "TooltipTrigger": {
+      "props": [
+        {
+          "name": "variant",
+          "type": "default | secondary | outline | destructive",
+          "default": "default",
+          "required": false,
+          "description": "The variant of the tooltip."
+        },
+        {
+          "name": "position",
+          "type": "top-start | top-center | top-end | bottom-start | bottom-center | bottom-end | left-start | left-center | left-end | right-start | right-center | right-end",
+          "default": "top-center",
+          "required": false,
+          "description": "The position of the TooltipContent."
+        }
+      ]
+    }
+  }
 }

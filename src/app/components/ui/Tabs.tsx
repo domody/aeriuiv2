@@ -42,10 +42,13 @@ const tabsListVariants = cva(
   {
     variants: {
       position: {
-        start: "mr-auto",
+        left: "mr-auto",
         center: "mx-auto",
-        end: "ml-auto",
+        right: "ml-auto",
       },
+    },
+    defaultVariants: {
+      position: "left",
     },
   },
 );

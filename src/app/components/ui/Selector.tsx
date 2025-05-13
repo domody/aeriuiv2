@@ -100,7 +100,7 @@ const Selector = React.forwardRef<HTMLDivElement, SelectorProps>(
           menuRef,
         }}
       >
-        <div ref={ref} className={cn("relative z-99", className)} {...props}>
+        <div ref={ref} className={cn("relative", className)} {...props}>
           {children}
         </div>
       </SelectorContext.Provider>
@@ -130,7 +130,7 @@ const SelectorTrigger = React.forwardRef<
         if (typeof ref === "function") ref(el);
         else if (ref) ref.current = el;
       }}
-      className={cn("min-w-[200px] h-10 justify-between px-4", className)}
+      className={cn("h-10 min-w-[200px] justify-between px-4", className)}
       variant={"outline"}
       onClick={(e) => {
         e.stopPropagation();
@@ -158,7 +158,7 @@ const selectorContentVariants = cva(
       },
     },
     defaultVariants: {
-      position: "left",
+      position: "center",
     },
   },
 );
@@ -166,15 +166,11 @@ const selectorContentVariants = cva(
 interface SelectContentProps
   extends OptionListProps,
     VariantProps<typeof selectorContentVariants> {
-  position?: "left" | "center" | "right";
   checkEnd?: boolean;
 }
 
 const SelectorContent = React.forwardRef<HTMLDivElement, SelectContentProps>(
-  (
-    { className, children, position = "center", checkEnd = true, ...props },
-    ref,
-  ) => {
+  ({ className, children, position, checkEnd = true, ...props }, ref) => {
     const context = useContext(SelectorContext);
     if (!context)
       throw new Error("ContextMenuContent must be used in a ContextMenu!");
@@ -194,8 +190,10 @@ const SelectorContent = React.forwardRef<HTMLDivElement, SelectContentProps>(
         }}
         className={cn(
           selectorContentVariants({ position }),
-          "z-100 w-min min-w-full",
-          open ? "scale-100 opacity-100" : "scale-90 opacity-0",
+          "z-50 w-min min-w-full",
+          open
+            ? "scale-100 opacity-100"
+            : "pointer-events-none scale-90 opacity-0",
           className,
         )}
         {...props}

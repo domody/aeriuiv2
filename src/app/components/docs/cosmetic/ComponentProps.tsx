@@ -49,16 +49,16 @@ type Prop = {
   internal?: boolean;
 };
 
-type SubComponentEntry = {
+type SubComponent = {
   extends?: string;
   props: Prop[];
 };
 
-type SubComponent = {
-  [subComponentName: string]: SubComponentEntry;
+type Component = {
+  [subComponentName: string]: SubComponent;
 };
 
-type Component = {
+type ComponentProps = {
   [componentName: string]: SubComponent;
 };
 
@@ -72,7 +72,7 @@ const ComponentProps = React.forwardRef<HTMLDivElement, ComponentPropsProps>(
       return <div ref={ref}>No component selected.</div>;
     }
     const formattedComponent = component.replace(" ", "");
-    const data = (propData as Component)[formattedComponent];
+    const data = (propData as ComponentProps)[formattedComponent];
 
     if (!data) {
       return <div ref={ref}>No props available for this component.</div>;
@@ -82,7 +82,7 @@ const ComponentProps = React.forwardRef<HTMLDivElement, ComponentPropsProps>(
       <div ref={ref} className="flex w-full flex-col gap-y-8" {...props}>
         {Object.entries(data).map(([subComponentName, propsArray], index) => {
           const resolvedProps = resolveProps(
-            propData as Component,
+            propData as ComponentProps,
             formattedComponent,
             subComponentName,
           );
@@ -113,22 +113,24 @@ const ComponentProps = React.forwardRef<HTMLDivElement, ComponentPropsProps>(
                     key={propIndex}
                     className="not-prose flex w-full gap-x-16 px-2"
                   >
-                    <div className="flex w-2/8 items-center gap-x-2">
-                      <Badge variant={"secondary"}>{prop.name}</Badge>
-                      <Tooltip>
-                        <TooltipTrigger>
-                          <Info className="text-muted-foreground size-4 cursor-pointer" />
-                        </TooltipTrigger>
-                        <TooltipContent
-                          position="top-start"
-                          variant="secondary"
-                          className="z-50 max-w-96 p-2 text-sm break-words whitespace-pre-line"
-                        >
-                          {prop.description}
-                        </TooltipContent>
-                      </Tooltip>
+                    <div className="flex w-2/8 items-start">
+                      <div className="flex items-center gap-x-2">
+                        <Badge variant={"secondary"}>{prop.name}</Badge>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <Info className="text-muted-foreground size-4 cursor-pointer" />
+                          </TooltipTrigger>
+                          <TooltipContent
+                            position="top-start"
+                            variant="secondary"
+                            className="z-50 max-w-96 p-2 text-sm break-words whitespace-pre-line"
+                          >
+                            {prop.description}
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
                     </div>
-                    <div className="flex w-5/8 flex-wrap gap-2">
+                    <div className="flex w-5/8 flex-wrap items-start gap-2">
                       {propType.map((type, typeIndex) => (
                         <Badge key={typeIndex} variant={"secondary"}>
                           {type.trim()}

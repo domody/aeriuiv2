@@ -2,9 +2,14 @@ import { Selector, SelectorTrigger, SelectorContent, SelectorContentItem } from 
 import { ComponentWrapper } from "@/app/components/docs/cosmetic/ComponentWrapper";
 import { ComponentDocPage } from "@/app/components/docs/cosmetic/ComponentDocPage";
 import { SelectorDemo } from "@/app/demos/Selector/Basic";
+import { SelectorControlledDemo } from "@/app/demos/Selector/Controlled";
 
 <ComponentDocPage name="Selector" description="A customizable selector component.">
   <ComponentWrapper fileOverride={"Selector"}>
     <SelectorDemo />
+  </ComponentWrapper>
+  ---
+  <ComponentWrapper fileOverride={"SelectorControlledDemo"}>
+    <SelectorControlledDemo />
   </ComponentWrapper>
 </ComponentDocPage>
