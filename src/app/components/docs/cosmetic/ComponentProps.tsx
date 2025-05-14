@@ -6,10 +6,35 @@ import {
   TooltipTrigger,
 } from "@/app/components/ui";
 import { Info } from "lucide-react";
-import propData from "@/app/data/props.json";
+import { cn } from "@/app/lib/utils/cn";
+
+type Prop = {
+  name: string;
+  type: string;
+  default: string;
+  required: boolean;
+  description: string;
+  internal?: boolean;
+};
+
+type SubComponent = {
+  extends?: string;
+  props?: Prop[];
+};
+
+type Component = {
+  [subComponentName: string]: SubComponent;
+};
+
+type ComponentProps = {
+  [componentName: string]: Component;
+};
+
+import rawPropData from "@/app/data/props.json";
+const propData = rawPropData as ComponentProps;
 
 function resolveProps(
-  components: Component,
+  components: ComponentProps,
   componentName: string,
   subComponentName: string,
   visited: Set<string> = new Set(),
@@ -40,34 +65,12 @@ function resolveProps(
   return [...extendedProps, ...baseProps];
 }
 
-type Prop = {
-  name: string;
-  type: string;
-  default: string;
-  required: boolean;
-  description: string;
-  internal?: boolean;
-};
-
-type SubComponent = {
-  extends?: string;
-  props: Prop[];
-};
-
-type Component = {
-  [subComponentName: string]: SubComponent;
-};
-
-type ComponentProps = {
-  [componentName: string]: SubComponent;
-};
-
 interface ComponentPropsProps extends React.HTMLAttributes<HTMLDivElement> {
   component?: string;
 }
 
 const ComponentProps = React.forwardRef<HTMLDivElement, ComponentPropsProps>(
-  ({ className, children, component, ...props }, ref) => {
+  ({ className, component, ...props }, ref) => {
     if (!component) {
       return <div ref={ref}>No component selected.</div>;
     }
@@ -79,8 +82,13 @@ const ComponentProps = React.forwardRef<HTMLDivElement, ComponentPropsProps>(
     }
 
     return (
-      <div ref={ref} className="flex w-full flex-col gap-y-8" {...props}>
-        {Object.entries(data).map(([subComponentName, propsArray], index) => {
+      <div
+        ref={ref}
+        className={cn(className, "flex w-full flex-col gap-y-8")}
+        {...props}
+      >
+        {Object.entries(data).map(([subComponentName], index) => {
+          console.log(subComponentName);
           const resolvedProps = resolveProps(
             propData as ComponentProps,
             formattedComponent,
@@ -150,5 +158,6 @@ const ComponentProps = React.forwardRef<HTMLDivElement, ComponentPropsProps>(
     );
   },
 );
+ComponentProps.displayName = "ComponentProps";
 
 export { ComponentProps };
