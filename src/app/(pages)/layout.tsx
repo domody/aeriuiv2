@@ -29,7 +29,7 @@ export default function RootLayout({
         <ThemeScript />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground stroke-foreground selection:bg-accent/50 antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground scroll-smooth stroke-foreground selection:bg-accent/50 antialiased`}
       >
         {children}
       </body>

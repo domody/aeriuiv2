@@ -51,42 +51,48 @@ const ComponentWrapper = React.forwardRef<
       fetchDemoCode();
     });
 
+    const demoName = fileOverride.match(/[A-Z][a-z]*/g);
     return (
-      <Tabs defaultValue="Preview" className="mb-8">
-        <TabList>
-          <Tab value="Preview">
-            <Eye /> Preview
-          </Tab>
-          <Tab value="Code">
-            <Terminal /> Code
-          </Tab>
-        </TabList>
-        <TabContent value="Preview">
-          <div
-            ref={ref}
-            className={cn(
-              "border-border bg-dots not-prose text-foreground flex items-center justify-center rounded border px-12 py-20",
-              className,
+      <>
+        {demoName && demoName?.length > 1 ? (
+          <h2 id={demoName[1]}>{demoName[1]}</h2>
+        ) : <h2 id="usage">Usage</h2>}
+        <Tabs defaultValue="Preview" className="mb-8">
+          <TabList>
+            <Tab value="Preview">
+              <Eye /> Preview
+            </Tab>
+            <Tab value="Code">
+              <Terminal /> Code
+            </Tab>
+          </TabList>
+          <TabContent value="Preview">
+            <div
+              ref={ref}
+              className={cn(
+                "border-border bg-dots not-prose text-foreground flex items-center justify-center rounded border px-12 py-20",
+                className,
+              )}
+              {...props}
+            >
+              <div className="flex w-[500px] items-center justify-center">
+                {children}
+              </div>
+            </div>
+          </TabContent>
+          <TabContent value="Code">
+            {loading ? (
+              <div className="border-border w-full rounded border bg-[oklch(23.76%_0.0114_285.5deg)] py-5">
+                <Loader className="mx-auto size-4 animate-spin" />
+              </div>
+            ) : (
+              <div className="relative">
+                <CodeBlock code={demoCode} />
+              </div>
             )}
-            {...props}
-          >
-            <div className="flex w-[500px] items-center justify-center">
-              {children}
-            </div>
-          </div>
-        </TabContent>
-        <TabContent value="Code">
-          {loading ? (
-            <div className="border-border w-full rounded border bg-[oklch(23.76%_0.0114_285.5deg)] py-5">
-              <Loader className="mx-auto size-4 animate-spin" />
-            </div>
-          ) : (
-            <div className="relative">
-              <CodeBlock code={demoCode} />
-            </div>
-          )}
-        </TabContent>
-      </Tabs>
+          </TabContent>
+        </Tabs>
+      </>
     );
   },
 );

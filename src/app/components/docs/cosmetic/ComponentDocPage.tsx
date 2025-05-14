@@ -19,7 +19,9 @@ export const ComponentDocPage: React.FC<ComponentDocPageProps> = ({
     <div className="prose w-full max-w-none">
       <h1 className="mb-2">{name}</h1>
       <p>{description}</p>
+      <Separator className="mb-8" />
 
+      <h2 id="Installation">Installation</h2>
       <InstallationGuide component={name.replace(/\s+/g, "")} />
 
       {children}

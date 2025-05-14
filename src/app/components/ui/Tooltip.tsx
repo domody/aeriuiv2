@@ -29,7 +29,6 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const startOpenTimeout = () => {
-      console.log("started");
       timeoutRef.current = setTimeout(() => {
         setOpen(true);
       }, duration);

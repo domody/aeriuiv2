@@ -12,7 +12,7 @@ export function SelectorControlledDemo() {
   const [value, setValue] = useState<string>("");
 
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-4">
+    <div className="flex flex-col items-start justify-center">
       <Selector value={value} onValueChange={(e) => setValue(e)}>
         <SelectorTrigger placeholder="Select Fruit..." />
         <SelectorContent checkEnd>

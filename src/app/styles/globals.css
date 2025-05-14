@@ -141,6 +141,10 @@ h3 {
   opacity: 0.84;
 }
 
+h2, h3 {
+  scroll-margin-top: 4rem;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
