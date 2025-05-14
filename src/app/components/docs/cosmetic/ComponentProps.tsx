@@ -83,14 +83,14 @@ const ComponentProps = React.forwardRef<HTMLDivElement, ComponentPropsProps>(
       return <div ref={ref}>No props available for this component.</div>;
     }
 
-    const allAreEmpty = Object.entries(data).every(([key, value]) => {
+    const allAreEmpty = Object.entries(data).every(([, value]) => {
       const hasExtends = "extends" in value;
       const hasProps = Array.isArray(value.props) && value.props.length > 0;
       return !hasExtends && !hasProps;
     });
 
     if (allAreEmpty) return;
-    
+
     return (
       <div className="flex w-full flex-col">
         <h2 id="API" className="flex w-full gap-4">
