@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import { Separator } from "aeriui/Separator";
 import { InstallationGuide } from "@/app/components/docs/cosmetic/InstallationGuide";
 import { ComponentProps } from "@/app/components/docs/cosmetic/ComponentProps";
