@@ -11,7 +11,7 @@ export default {
       typography: () => ({
         DEFAULT: {
           css: {
-            "--tw-prose-body": "oklch(var(--muted-foreground))",
+            "--tw-prose-body": "oklch(var(--foreground))",
             "--tw-prose-headings": "oklch(var(--foreground))",
             "--tw-prose-lead": "oklch(var(--foreground))",
             "--tw-prose-links": "oklch(var(--foreground))",

@@ -26,7 +26,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </Link>
     ),
     hr: () => <Separator className="my-8" />,
-
+    strong: ({ children }) => (
+      <strong className="font-medium">{children}</strong>
+    ),
     pre: ({ children }) => {
       const codeElement = children as React.ReactElement<CodeElementProps>;
 

@@ -35,7 +35,7 @@ export function Sidebar({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "bg-background sm:fixed sm:top-14 sm:w-48 border-border z-50 min-h-screen w-full shrink-0 flex-col border-r pt-8 pr-2 pl-4 transition-transform duration-300",
+        "bg-background sm:fixed sm:top-14 sm:w-48 z-50 min-h-screen w-full shrink-0 flex-col pt-8 pr-2 pl-4 transition-transform duration-300",
         className,
       )}
     >

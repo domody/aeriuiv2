@@ -27,26 +27,6 @@ export const ComponentDocPage: React.FC<ComponentDocPageProps> = ({
       {children}
 
       <ComponentProps component={name} />
-
-      <Separator className="not-prose mt-8">
-        <Link
-          href="https://github.com/domody/aeriuiv2"
-          className="underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          aeriui on github
-        </Link>
-        , by{" "}
-        <Link
-          href="https://domody.vercel.app/"
-          className="underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          domody
-        </Link>
-      </Separator>
     </div>
   );
 };

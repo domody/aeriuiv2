@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "@/app/styles/globals.css";
 
 import ThemeScript from "@/app/lib/utils/ThemeScript";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -29,7 +31,7 @@ export default function RootLayout({
         <ThemeScript />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground scroll-smooth stroke-foreground selection:bg-accent/50 antialiased`}
+        className={`${inter.variable} ${geistMono.variable} bg-background text-foreground stroke-foreground selection:bg-accent/50 scroll-smooth antialiased`}
       >
         {children}
       </body>
