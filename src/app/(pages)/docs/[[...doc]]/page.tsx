@@ -22,7 +22,7 @@ export default async function ComponentPage({
     return (
       <>
         <SetTitle title={title} />
-        <div className="prose prose-headings:!text-white prose-headings:!font-semibold min-h-full w-full max-w-full shrink">
+        <div className="prose prose-headings:!text-headings prose-headings:!font-semibold min-h-full w-full max-w-full shrink">
           <Page />
 
           <Separator className="not-prose mt-8">

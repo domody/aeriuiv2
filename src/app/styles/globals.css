@@ -68,10 +68,12 @@
 
   :root {
     --pattern-fg: color-mix(in oklab, var(--color-black) 20%, transparent);
+    --headings: black;
   }
 
   .dark {
     --pattern-fg: color-mix(in oklab, var(--color-white) 10%, transparent);
+    --headings: white;
   }
 }
 
@@ -96,6 +98,8 @@
   --color-border: oklch(var(--border));
   --color-input: oklch(var(--input));
   --color-ring: oklch(var(--ring));
+
+  --color-headings: var(--headings);
 }
 
 @layer base {
@@ -141,7 +145,8 @@ h3 {
   opacity: 0.84;
 }
 
-h2, h3 {
+h2,
+h3 {
   scroll-margin-top: 4rem;
 }
 
