@@ -8,8 +8,8 @@ import {
 
 export function ContextMenuDemo() {
   return (
-    <ContextMenu>
-      <ContextMenuTrigger className="border-border bg-background flex h-[300px] w-[600px] items-center justify-center rounded-md border border-dashed text-sm">
+    <ContextMenu className="h-full w-full">
+      <ContextMenuTrigger className="border-border bg-background flex h-[300px] w-full max-w-[600px] items-center justify-center rounded-md border border-dashed text-sm">
         Right-Click Here
       </ContextMenuTrigger>
       <ContextMenuContent>
